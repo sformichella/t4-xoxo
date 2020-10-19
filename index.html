@@ -8,14 +8,79 @@
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles/reset.css">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css">
     <link rel="stylesheet" href="styles/home.css">
     <title>Document</title>
 </head>
 
 <body>
    
+    <header>
 
+    </header>
+
+    <main>
+        <div class="flex-row flex-centered">
+            <section>
+                <form class="flex-column">
+                    <span>User Name</span>
+                    <input type="text">
+
+                    <hr>
+
+                    <span>Choose Game Pieces</span>
+                    <label>
+                        <input type="radio" name="piece" checked>
+                        X's
+                    </label>
+                    <label>
+                        <input type="radio" name="piece">
+                        O's
+                    </label>
+
+                    <hr>
+
+                    <span>Choose Piece Color</span>
+                    <label>
+                        <input type="radio" name="color" checked>
+                        Red
+                    </label>
+                    <label>
+                        <input type="radio" name="color">
+                        Blue
+                    </label>
+
+                    <hr>
+
+                    <span>Choose Game Style</span>
+                    <label>
+                        <input type="radio" name="game-style" checked>
+                        Easy
+                    </label>
+
+                    <button>Submit</button>
+                </form>
+            </section>
+
+            <section class="flex-column">
+                <span>Rules of Tic Tac Toe</span>
+
+                <ul>
+                    <li> The objective is to place three of the same piece in a row, either:</li>
+
+                    <ul>
+                        <li> Horizonal</li>
+                        <li> Vertical</li>
+                        <li> Diagonal</li>
+                    </ul>
+
+                    <li> Players will place pieces alternating with X going first.</li>
+
+                    <li> The game ends after a player wins by placing three of the same piece in a row OR the game board is full (9 moves).</li>
+                </ul>
+            </section>
+        </div>
+    </main>
 
     <script type="module" src="home.js"></script>
 </body>

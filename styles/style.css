@@ -8,3 +8,42 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+main {
+    width: 100%;
+}
+
+section {
+    width: 400px;
+
+    margin: 10px;
+}
+
+input[type="text"] {
+    width: 150px;
+}
+
+hr {
+    width: 80%;
+}
+
+form > button {
+    width: 75px;
+    
+    border-radius: 10%;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-centered {
+    justify-content: center;
+    align-items: center;
+}
