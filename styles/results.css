@@ -1,0 +1,15 @@
+main {
+    
+    background-image: url('../assets/football_xs_os.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+canvas {
+    background-color: white;
+    width: 400px;
+    height: 400px;
+}
