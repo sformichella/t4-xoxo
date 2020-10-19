@@ -1,0 +1,10 @@
+
+hr {
+    width: 80%;
+}
+
+form > button {
+    width: 75px;
+    
+    border-radius: 10%;
+}
