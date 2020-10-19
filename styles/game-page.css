@@ -58,6 +58,12 @@ button {
     border-radius: 1%;
 }
 
+.game-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .player-info {
     align-items: center;
 

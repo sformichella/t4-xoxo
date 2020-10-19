@@ -19,19 +19,19 @@ export default [{
         },
         {
             player:null,
-            turn:null
+            turn: -1
         },
         {
             player:null,
-            turn:null
+            turn: -1
         },
         {
             player:null,
-            turn:null
+            turn: -1
         },
         {
             player:null,
-            turn:null
+            turn: -1
         },
         {
             player: 'computer',
@@ -55,11 +55,11 @@ export default [{
         },
         {
             player:null,
-            turn:null
+            turn: -1
         },
         {
             player:null,
-            turn:null
+            turn: -1
         },
         {
             player: 'computer',
@@ -75,7 +75,7 @@ export default [{
         },
         {
             player:null,
-            turn:null
+            turn: -1
         },
         {
             player: 'player',
@@ -115,11 +115,11 @@ export default [{
         },
         {
             player:null,
-            turn:null
+            turn: -1
         },
         {
             player:null,
-            turn:null
+            turn: -1
         },
         {
             player: 'computer',
