@@ -1,5 +1,9 @@
 main {
     width: 100%;
+    background-image: url('../assets/football_xs_os.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
 }
 
 section {
@@ -31,8 +35,7 @@ section {
 }
 
 body {
-    background-image: url('../assets/football_xs_os.jpg');
-    background-size: cover;
+
 }
 
 li {
