@@ -1,69 +1,124 @@
-
-
-
+body {
+    background-image: ;
+}
 
 main {
-    display: flex
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 800px;
+    max-width: 1000px;
+
+    overflow: auto;
+}
+
+section h2, section h3 {
+    font-family: 'Noto', serif;
 }
 
 button {
     width: 80px;
     border-radius: 10%;
+    border: solid 1p;
 
+    margin: 5px;
+
+    background-color: lightskyblue;
+
+    font-family: 'Noto', sans-serif;
+    font-weight: 700;
 }
 
 .game-board {
     display: grid;
-    grid-template-columns: 50px 50px 50px;
-    grid-template-rows: 50px 50px 50px;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+
+    justify-content: center;
+
+    width: 480px;
+    padding: 10px;
+
+    background-color: gainsboro;
+
+    border-radius: 1%;
 }
 
+.player-info {
+    align-items: center;
+
+    width: 300px;
+}
+
+.scores {
+    margin-bottom: 40px;
+}
+
+p {
+    width: 40px;
+    height: 40px;
+
+    margin: 5px;
+
+    background-color: lightgray;
+    border: 1px solid darkgray;
+
+    font-size: 1.5em;
+}
+
+
+
+
+
 #top-left { 
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+    border-bottom: 2px solid #3F58DF;
+    border-right: 2px solid #3F58DF;
+
     grid-column: 1; 
     grid-row: 1;
 
 }
 
 #top-mid {
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
-    border-left: 1px solid black;
+    border-bottom: 2px solid #3F58DF;
+    border-right: 2px solid #3F58DF;
+    border-left: 2px solid #3F58DF;
     grid-column: 2;
     grid-row: 1;
     }
 
 #top-right {
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
+    border-bottom: 2px solid #3F58DF;
+    border-left: 2px solid #3F58DF;
     grid-column: 3;
     grid-row: 1;
 
 }
 
 #mid-mid {
-    border: 1px solid black;
+    border: 2px solid #3F58DF;
     grid-column: 2;
     grid-row: 2;
 }
 
 #mid-left {
-    border: 1px solid black;
+    border: 2px solid #3F58DF;
     border-left: 0;
     grid-column: 1;
     grid-row: 2;
 }
 
 #mid-right {
-    border: 1px solid black;
+    border: 2px solid #3F58DF;
     border-right: 0;
     grid-column: 3;
     grid-row: 2;
 }
 
 #bottom-left {
-    border: 1px solid black;
+    border: 2px solid #3F58DF;
     border-bottom: 0;
     border-left: 0;
     grid-column: 1;
@@ -71,7 +126,7 @@ button {
 }
 
 #bottom-right {
-    border: 1px solid black;
+    border: 2px solid #3F58DF;
     border-bottom: 0;
     border-right: 0;
     grid-column: 3;
@@ -80,7 +135,7 @@ button {
 }
 
 #bottom-mid {
-    border: 1px solid black;
+    border: 2px solid #3F58DF;
     border-bottom: 0;
     grid-column: 2;
     grid-row: 3;

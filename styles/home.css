@@ -1,3 +1,16 @@
+section {
+    width: 400px;
+
+    margin: 10px;
+}
+
+main {
+    width: 100%;
+}
+
+input[type="text"] {
+    width: 150px;
+}
 
 hr {
     width: 80%;
