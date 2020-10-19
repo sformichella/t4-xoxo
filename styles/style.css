@@ -15,15 +15,12 @@ main {
 
 section {
     width: 400px;
-
     margin: 10px;
 }
 
 input[type="text"] {
-    width: 150px;
+    width: 160px;
 }
-
-
 
 .flex-column {
     display: flex;

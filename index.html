@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="styles/reset.css">
     <link rel="stylesheet" href="./styles/style.css">
@@ -23,19 +24,19 @@
         <div class="flex-row flex-centered">
             <section>
                 <form id ="user-form" class="flex-column">
-                    <span>User Name</span>
-                    <input type="text" name="name">
+                    <span>Enter User Name</span>
+                    <input type="text" name="name" placeholder="Serena van der Woodsen">
 
                     <hr>
 
                     <span>Choose Game Pieces</span>
                     <label>
                         <input type="radio" name="piece" value="X" checked>
-                        X"s
+                        X's
                     </label>
                     <label>
                         <input type="radio" name="piece" value="O">
-                        O"s
+                        O's
                     </label>
 
                     <hr>
@@ -63,7 +64,7 @@
             </section>
 
             <section class="flex-column">
-                <span>Rules of Tic Tac Toe</span>
+                <h2><span>Rules of Tic Tac Toe</span></h2>
 
                 <ul>
                     <li> The objective is to place three of the same piece in a row, either:</li>
@@ -73,10 +74,10 @@
                         <li> Vertical</li>
                         <li> Diagonal</li>
                     </ul>
-
+                    <br>
                     <li> Players will place pieces alternating with X going first.</li>
-
-                    <li> The game ends after a player wins by placing three of the same piece in a row OR the game board is full (9 moves).</li>
+                    <br>
+                    <li> The game ends after a player wins by placing three of the same piece in a row OR the game board is full (9 moves) and results in cat's game.</li>
                 </ul>
             </section>
         </div>
