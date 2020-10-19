@@ -4,8 +4,22 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url('../assets/football_xs_os.jpg');
+    background-size: cover;
 }
 
-.bio-cards {
+h1 {
+    color: white;
+}
+
+.spread {
     display: flex;
+}
+
+.bio-card {
+    width: 200px;
+    background-color: white;
+    border: black 1px solid;
+    border-radius: 5px;
+    margin: 10px;
 }
