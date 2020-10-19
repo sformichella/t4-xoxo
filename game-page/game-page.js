@@ -1,4 +1,5 @@
 import { renderHeader } from '../header/header.js';
+import { getFromLocalStorage, setInLocalStorage } from '../utils.js'
 
 renderHeader();
 
@@ -22,3 +23,66 @@ renderHeader();
             //check if computer won
             //check if 9 move occurred
 
+const roundsData = getFromLocalStorage('roundsData');
+const currentBoard = roundsData[roundsData.length - 1].board;
+
+
+
+const boardForm = document.getElementById('board-form');
+
+boardForm.addEventListener('click', (e) => {
+
+    // Set Image to X
+    const cell = e.target;
+
+    const image = document.createElement('img');
+    image.setAttribute('src', '../assets/SingleX.svg');
+
+    cell.appendChild(image);
+
+
+    // Adjust Board Object in localStorage
+    const cellNumber = cellLocation(cell.id);
+
+    currentBoard[cellNumber].player = 'player';
+
+    const numberOfTurns = getTurnNumber(currentBoard) + 1;
+    currentBoard[cellNumber].turn = numberOfTurns;
+
+    roundsData[roundsData.length - 1].board = currentBoard;
+    setInLocalStorage('roundsData', roundsData);
+});
+
+
+
+
+function cellLocation(string) {
+
+    const semanticLocation = [
+        'top-left',
+        'top-mid',
+        'top-right',
+        'mid-left',
+        'mid-mid',
+        'mid-right',
+        'bottom-left',
+        'bottom-mid',
+        'bottom-right'
+    ];
+
+    return semanticLocation.indexOf(string);
+};
+
+function getTurnNumber(boardArray) {
+    let numberOfTurns = -1;
+
+    boardArray.forEach(
+        element => {
+            if (element.turn > numberOfTurns) {
+                numberOfTurns = element.turn;
+            };
+        }
+    );
+
+    return numberOfTurns;
+}

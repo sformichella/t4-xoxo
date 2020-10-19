@@ -21,7 +21,7 @@ form.addEventListener('submit', (e) => {
 
     const boardSquare = {
         player: null,
-        turn: null
+        turn: -1
     };
 
     const boardArray = [];
