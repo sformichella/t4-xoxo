@@ -5,9 +5,6 @@ renderHeader();
 
 const form = document.getElementById('user-form');
 
-
-
-
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -37,5 +34,7 @@ form.addEventListener('submit', (e) => {
     roundsArray.push(roundObject);
 
     setInLocalStorage('roundsData', roundsArray);
+
+    window.location.replace('./game-page/index.html');
 });
 
