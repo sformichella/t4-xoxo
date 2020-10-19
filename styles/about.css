@@ -6,6 +6,7 @@ main {
     align-items: center;
     background-image: url('../assets/football_xs_os.jpg');
     background-size: cover;
+    height: 100%;
 }
 
 h1 {
