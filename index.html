@@ -22,31 +22,31 @@
     <main>
         <div class="flex-row flex-centered">
             <section>
-                <form class="flex-column">
+                <form id ="user-form" class="flex-column">
                     <span>User Name</span>
-                    <input type="text">
+                    <input type="text" name="name">
 
                     <hr>
 
                     <span>Choose Game Pieces</span>
                     <label>
-                        <input type="radio" name="piece" checked>
-                        X's
+                        <input type="radio" name="piece" value="X" checked>
+                        X"s
                     </label>
                     <label>
-                        <input type="radio" name="piece">
-                        O's
+                        <input type="radio" name="piece" value="O">
+                        O"s
                     </label>
 
                     <hr>
 
                     <span>Choose Piece Color</span>
                     <label>
-                        <input type="radio" name="color" checked>
+                        <input type="radio" name="color" value="red" checked>
                         Red
                     </label>
                     <label>
-                        <input type="radio" name="color">
+                        <input type="radio" name="color" value = "blue">
                         Blue
                     </label>
 
@@ -54,11 +54,11 @@
 
                     <span>Choose Game Style</span>
                     <label>
-                        <input type="radio" name="game-style" checked>
+                        <input type="radio" name="game-style" value="easy" checked>
                         Easy
                     </label>
 
-                    <button>Submit</button>
+                    <button id="submit-button">Submit</button>
                 </form>
             </section>
 
