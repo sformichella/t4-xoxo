@@ -1,15 +1,14 @@
-section {
-    width: 400px;
-
-    margin: 10px;
-}
-
 main {
     width: 100%;
 }
 
+section {
+    width: 400px;
+    margin: 10px;
+}
+
 input[type="text"] {
-    width: 150px;
+    width: 160px;
 }
 
 hr {
@@ -18,6 +17,36 @@ hr {
 
 form > button {
     width: 75px;
-    
     border-radius: 10%;
+    align-self: center;
+}
+
+section {
+    align-self: flex-start;
+    height: 400px;
+    background-color: white;
+    border: solid black 5px;
+    padding: 25px;
+    font-family: 'Noto Serif', serif;
+}
+
+body {
+    background-image: url('../assets/football_xs_os.jpg');
+    background-size: cover;
+}
+
+li {
+    text-align: justify;
+    text-justify: inter-word;
+    padding-right: 20px;
+}
+
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
