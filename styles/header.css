@@ -1,0 +1,45 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color3);
+    height: var(--header-height);
+    box-shadow: var(--shadow);
+    position: relative;
+    border-bottom: 1px solid black;
+}
+
+.header-label{
+    text-align: center;
+}
+
+.header-h1{
+    color: #3F58DF;
+    font-size: 3em;
+    justify-items: center;
+}
+
+.header-icons{
+    height: 60px;
+    width: 150px;
+}
+
+.right-margin{
+    margin-right: 50px;
+}
+
+.left-margin{
+    margin-left: 50px;
+}
+
+.justify-center{
+    justify-content: center;
+    align-content: center;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+#header-container{
+    width: 100vw;
+}
