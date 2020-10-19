@@ -1,5 +1,17 @@
 
 
+
+
+main {
+    display: flex
+}
+
+button {
+    width: 80px;
+    border-radius: 10%;
+
+}
+
 .game-board {
     display: grid;
     grid-template-columns: 50px 50px 50px;
@@ -73,3 +85,4 @@
     grid-column: 2;
     grid-row: 3;
 }
+
