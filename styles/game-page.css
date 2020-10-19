@@ -1,5 +1,10 @@
 body {
-    background-image: ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-image: url('../assets/football_xs_os.jpg');
+    background-size: cover;
 }
 
 main {
@@ -10,12 +15,19 @@ main {
 
     min-width: 800px;
     max-width: 1000px;
+    min-height: 500px;
 
     overflow: auto;
+
+    background-color: ghostwhite;
+
+    border-radius: 2%;
 }
 
 section h2, section h3 {
     font-family: 'Noto', serif;
+
+    color: darkblue
 }
 
 button {
@@ -25,7 +37,8 @@ button {
 
     margin: 5px;
 
-    background-color: lightskyblue;
+    background-color: lightblue;
+    color: darkblue;
 
     font-family: 'Noto', sans-serif;
     font-weight: 700;
@@ -41,7 +54,7 @@ button {
     width: 480px;
     padding: 10px;
 
-    background-color: gainsboro;
+    background-color: lightblue;
 
     border-radius: 1%;
 }
