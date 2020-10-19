@@ -1,4 +1,4 @@
-import { setInLocalStorage } from './utils.js';
+import { setInLocalStorage, getFromLocalStorage } from './utils.js';
 
 const form = document.getElementById('user-form');
 
@@ -19,7 +19,20 @@ form.addEventListener('submit', (e) => {
         outcome: -2
     };
 
-    setInLocalStorage('roundData', roundObject);
+    const boardSquare = {
+        player: null,
+        turn: null
+    };
 
+    const boardArray = [];
+    for (let i = 0; i < 9; i++){
+        boardArray.push(boardSquare);
+    }
+
+    roundObject.board = boardArray;
+    const roundsArray = [];
+    roundsArray.push(roundObject);
+
+    setInLocalStorage('roundsData', roundsArray);
 });
 
