@@ -1,4 +1,15 @@
+main {
+    width: 100%;
+}
 
+section {
+    width: 400px;
+    margin: 10px;
+}
+
+input[type="text"] {
+    width: 160px;
+}
 
 hr {
     width: 80%;

@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet"> 
+
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/game-page.css">
 </head>
 
 <body>
+
     <header>
 
     </header>
+
     <main class="flex-row">
         <section>
             <div class='game-board'>
@@ -28,23 +32,36 @@
                 <div id="bottom-right">o</div>
             </div>
         </section>
-        <section class="flex-column">
+
+        <section class="flex-column player-info">
+
             <h2>Player</h2>
+
             <h3>Too Easy</h3>
-            <div class="flex-row">
-                <div class="flex-column">
-                    <div>1</div>
-                    <div id="wins" class="flex-column">W</div>
+
+            <div class="scores flex-row">
+                <div class="flex-column flex-centered">
+                    <p class="flex-column flex-centered">
+                        <span>17</span>
+                    </p>
+                    <div id="wins" class="flex-column">Wins</div>
                 </div>
-                <div class="flex-column">
-                    <div>2</div>
-                    <div id="losses" class="flex-column">L</div>
+
+                <div class="flex-column flex-centered">
+                    <p class="flex-column flex-centered">
+                        <span>2</span>
+                    </p>
+                    <div id="losses" class="flex-column">Losses</div>
                 </div>
-                <div class="flex-column">
-                    <div>3</div>
-                    <div id="cats" class="flex-column">C</div>
+
+                <div class="flex-column flex-centered">
+                    <p class="flex-column flex-centered">
+                        <span>3</span>
+                    </p>
+                    <div id="cats" class="flex-column">Cats</div>
                 </div>
             </div>
+
             <button>Play</button>
             <button>New Series</button>
 

@@ -9,19 +9,6 @@ html, body {
     padding: 0;
 }
 
-main {
-    width: 100%;
-}
-
-section {
-    width: 400px;
-    margin: 10px;
-}
-
-input[type="text"] {
-    width: 160px;
-}
-
 .flex-column {
     display: flex;
     flex-direction: column;
