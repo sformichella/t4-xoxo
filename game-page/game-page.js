@@ -12,6 +12,13 @@ userName.textContent = `User: ${userInfo.name}`;
 const difficultyElem = document.getElementById('difficulty');
 difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 
+const totalWins = document.getElementById('total-wins');
+const totalLosses = document.getElementById('total-losses');
+const totalCats = document.getElementById('total-cats');
+
+totalWins.textContent = localStorage.getItem('Wins');
+totalLosses.textContent = localStorage.getItem('Losses');
+totalCats.textContent = localStorage.getItem('Cats');
 
 //grab user input from local storage and set player name and difficulty on page
 
@@ -173,7 +180,7 @@ function resetGameBoardDOM() {
         const locationDOM = document.getElementById(location);
         const hasChild = document.getElementById(location).childElementCount;
         if (hasChild === 1) {
-            locationDOM.removeChild(locationDOM.firstChild); 
+            locationDOM.removeChild(locationDOM.firstChild);
         }
     }
 }
