@@ -1,5 +1,6 @@
 import { renderHeader } from '../header/header.js';
-import { getFromLocalStorage, setInLocalStorage } from '../utils.js'
+import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
+import { getComputerMove } from './game-page-utils.js';
 
 renderHeader();
 
@@ -46,11 +47,12 @@ boardForm.addEventListener('click', (e) => {
 
     currentBoard[cellNumber].player = 'player';
 
-    const numberOfTurns = getTurnNumber(currentBoard) + 1;
+    let numberOfTurns = getTurnNumber(currentBoard) + 1;
     currentBoard[cellNumber].turn = numberOfTurns;
 
     roundsData[roundsData.length - 1].board = currentBoard;
     setInLocalStorage('roundsData', roundsData);
+
 
     const computersMove = getComputerMove();
     const computerCell = document.getElementById(cellName(computersMove));
@@ -58,6 +60,14 @@ boardForm.addEventListener('click', (e) => {
     const compImage = document.createElement('img');
     compImage.setAttribute('src', '../assets/SingleO.svg');
     computerCell.appendChild(compImage);
+
+    numberOfTurns = getTurnNumber(currentBoard) + 1;
+    currentBoard[cellNumber].turn = numberOfTurns;
+
+    roundsData[roundsData.length - 1].board = currentBoard;
+    setInLocalStorage('roundsData', roundsData);
+
+
 
 });
 
