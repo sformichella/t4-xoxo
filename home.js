@@ -1,5 +1,5 @@
 import { setInLocalStorage, getFromLocalStorage } from './utils.js';
-import { renderHeader } from '../header/header.js';
+import { renderHeader } from './header/header.js';
 
 renderHeader();
 
