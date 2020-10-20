@@ -143,9 +143,10 @@ function getTurnNumber(boardArray) {
     return numberOfTurns;
 }
 
-const buttonDiv = document.getElementsByTagName('button')[0];
+const newGameButton = document.getElementsByTagName('button')[0];
+const resetSeriesButton = document.getElementsByTagName('button')[1];
 
-buttonDiv.addEventListener('click', () => {
+newGameButton.addEventListener('click', () => {
     pushNewRoundToLocalStorage();
     resetGameBoardDOM();
 
@@ -157,6 +158,14 @@ buttonDiv.addEventListener('click', () => {
     const difficultyElem = document.getElementById('difficulty');
     difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 });
+
+
+resetSeriesButton.addEventListener('click', () => {
+
+    window.location.replace('../index.html');
+});
+
+
 
 function resetGameBoardDOM() {
     for (let i = 0; i < 9; i++) {
