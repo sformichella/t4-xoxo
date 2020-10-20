@@ -56,6 +56,38 @@ export function getComputerMove() {
     return rand;
 }
 
+export function cellLocation(string) {
+
+    const semanticLocation = [
+        'top-left',
+        'top-mid',
+        'top-right',
+        'mid-left',
+        'mid-mid',
+        'mid-right',
+        'bottom-left',
+        'bottom-mid',
+        'bottom-right'
+    ];
+
+    return semanticLocation.indexOf(string);
+}
+
+export function cellName(number) {
+    const semanticLocation = [
+        'top-left',
+        'top-mid',
+        'top-right',
+        'mid-left',
+        'mid-mid',
+        'mid-right',
+        'bottom-left',
+        'bottom-mid',
+        'bottom-right'
+    ];
+    return semanticLocation[number];
+}
+
 export function makeFreshBoard() {
     const newBoard = [{
         player: null,
@@ -231,4 +263,47 @@ export function getUserInfo() {
     userInfo.difficulty = roundData[roundData.length - 1].difficulty;
 
     return userInfo;
+}
+
+function populateBoardElement(element, boardArray) {
+    // This functions grabs all of the cells from inside
+    // of an outer form element. Then it adds an image 
+    // to each cell depending on the player property of
+    // each object in the boardArray
+
+
+    // Make array of cells inside of the form element
+    const boardNodeList = element.childNodes;
+    const cells = [];
+
+    for (const item of boardNodeList) {
+        if (item.nodeType !== 3) {
+            cells.push(item);
+        }
+    }
+
+    console.log(cells);
+
+    // Loop through each cell and add an image if necessary
+    cells.forEach(cell => {
+        // Get the cell's location number 0 - 8
+        const location = cellLocation(cell.id);
+
+        // If the player is the computer, add an O image to the
+        // cell div
+        if (boardArray[location].player === 'computer') {
+            const cellImage = document.createElement('img');
+                cellImage.setAttribute('src', '../assets/SingleO.svg');
+
+            cell.appendChild(cellImage);
+        } 
+        // Else if the player name is truthy, i.e the player, add
+        // an X image to the cell div
+        else if (boardArray[location].player) {
+            const cellImage = document.createElement('img');
+                cellImage.setAttribute('src', '../assets/SingleX.svg');
+
+            cell.appendChild(cellImage);
+        }
+    })
 }
