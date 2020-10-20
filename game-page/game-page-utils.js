@@ -98,7 +98,6 @@ export function checkWin(board) {
         return playerTwo;
     };
 
-    console.log(turnCount);
 
     if (turnCount === 9) {
         return 'cat';
