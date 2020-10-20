@@ -2,9 +2,12 @@ import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
 
 
 
-let wins = 0;
-let losses = 0;
-let cats = 0;
+// let wins = 0;
+// let losses = 0;
+// let cats = 0;
+let wins = localStorage.getItem('Wins');
+let losses = localStorage.getItem('Losses');
+let cats = localStorage.getItem('Cats');
 
 export function renderGameResult(gameResult) {
     const totalWins = document.getElementById('total-wins');
@@ -13,18 +16,21 @@ export function renderGameResult(gameResult) {
 
     if (gameResult === 'player') {
         wins++;
-        totalWins.textContent = wins;
-        localStorage.setItem('Wins', totalWins.textContent);
+        localStorage.setItem('Wins', wins);
+        const winsStored = localStorage.getItem('Wins');
+        totalWins.textContent = winsStored;
     }
     if (gameResult === 'computer') {
         losses++;
-        totalLosses.textContent = losses;
-        localStorage.setItem('Loses', totalLosses.textContent);
+        localStorage.setItem('Losses', losses);
+        const lossesStored = localStorage.getItem('Losses');
+        totalLosses.textContent = lossesStored;
     }
     if (gameResult === 'cat') {
         cats++;
-        totalCats.textContent = cats;
-        localStorage.setItem('Ties', totalCats.textContent);
+        localStorage.setItem('Cats', cats);
+        const catsStored = localStorage.getItem('Cats');
+        totalCats.textContent = catsStored;
     }
 }
 
@@ -191,7 +197,7 @@ export function pushNewRoundToLocalStorage() {
         board: makeFreshBoard()
     };
 
-    
+
 
     roundsData.push(roundObject);
     setInLocalStorage('roundsData', roundsData);
