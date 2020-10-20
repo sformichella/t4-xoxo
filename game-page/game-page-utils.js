@@ -1,4 +1,4 @@
-import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
+import { getFromLocalStorage, setInLocalStorage, gameColorPieceX } from '../utils.js';
 
 
 
@@ -227,6 +227,11 @@ export function setOutcomeInteger(winStatus) {
 
 }
 
+export function currentBoardPieceColor(){
+    const roundData = getFromLocalStorage('roundsData');
+    return roundData[roundData.length - 1].color;
+}
+
 export function getUserInfo() {
     const roundData = getFromLocalStorage('roundsData');
 
@@ -255,7 +260,6 @@ export function populateBoardElement(element, boardArray) {
         }
     }
 
-    console.log(cells);
 
     // Loop through each cell and add an image if necessary
     cells.forEach(cell => {
@@ -267,16 +271,16 @@ export function populateBoardElement(element, boardArray) {
         if (boardArray[location].player === 'computer') {
             const cellImage = document.createElement('img');
             cellImage.setAttribute('src', '../assets/SingleO.svg');
-
             cell.appendChild(cellImage);
+            //cell.innerHTML = gameColorPieceX('#FF0000');
         } 
         // Else if the player name is truthy, i.e the player, add
         // an X image to the cell div
         else if (boardArray[location].player) {
-            const cellImage = document.createElement('img');
-            cellImage.setAttribute('src', '../assets/SingleX.svg');
+            //const cellImage = document.createElement('img');
+            //cellImage.setAttribute('src', '../assets/SingleX.svg');
 
-            cell.appendChild(cellImage);
+            cell.innerHTML = gameColorPieceX(currentBoardPieceColor());
         }
     });
 }
@@ -293,4 +297,76 @@ export function getTurnNumber(boardArray) {
     );
 
     return numberOfTurns;
+}
+
+export function executeFullTurn(e){
+    //getting currentboard from local storage
+    const roundsData = getFromLocalStorage('roundsData');
+    const currentBoard = roundsData[roundsData.length - 1].board;
+
+    //setting the clicked div 
+    const cell = e.target;
+
+    //if there is an image on the div or the game has an outcome exit click handler
+    if (cell.src || roundsData[roundsData.length - 1].outcome > -2) {
+        return;
+    }
+
+    //sets color of X piece
+    cell.innerHTML = gameColorPieceX(roundsData[0].color);
+
+    // index of clicked  cell
+    const cellNumber = cellLocation(cell.id);
+
+    // sets cell to player clicked it
+    currentBoard[cellNumber].player = 'player';
+
+    // increase current turn by 1
+    let numberOfTurns = getTurnNumber(currentBoard) + 1;
+    currentBoard[cellNumber].turn = numberOfTurns;
+
+    //set current board back in roundsData
+    roundsData[roundsData.length - 1].board = currentBoard;
+
+    //sets roundsData into local storage
+    setInLocalStorage('roundsData', roundsData);
+
+
+    //checks if a winning combination is on the board
+    let winStatus = checkWin(currentBoard);
+
+    //if there is no winning combination let the computer go
+    if (winStatus === null) {
+        // return computer index next move
+        const computersMove = getComputerMove();
+        const computerCell = document.getElementById(cellName(computersMove));
+
+        //drop O image from computer move slot
+        const compImage = document.createElement('img');
+        compImage.setAttribute('src', '../assets/SingleO.svg');
+        computerCell.appendChild(compImage);
+
+
+        //assign computer to that board cell
+        currentBoard[computersMove].player = 'computer';
+
+        //increases number of turns
+        numberOfTurns = getTurnNumber(currentBoard) + 1;
+        currentBoard[computersMove].turn = numberOfTurns;
+
+        //sets roundsData in localstorage
+        roundsData[roundsData.length - 1].board = currentBoard;
+        setInLocalStorage('roundsData', roundsData);
+
+        //checks for win status after computer has made move
+        winStatus = checkWin(currentBoard);
+
+    }
+    //check if win status has been reached after player and/or computer moves
+    if (winStatus) {
+        //places results in squares on page
+        renderGameResult(winStatus);
+        //increment localstorage to -1, 0, or 1
+        setOutcomeInteger(winStatus);
+    }
 }
