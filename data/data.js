@@ -131,6 +131,94 @@ export default [{
         }
     ] },
 
+{
+    name: 'abc',
+    piece: 'x',
+    color: 'red',
+    difficulty: 'easy',
+    outcome: 1,
+    board:[
+        {
+            player: 'computer',
+            turn: 0
+        },
+        {
+            player: 'computer',
+            turn: 1
+        },
+        {
+            player: 'player',
+            turn: 2
+        },
+        {
+            player: 'player',
+            turn: 3
+        },
+        {
+            player: 'player',
+            turn: 4
+        },
+        {
+            player: 'computer',
+            turn: 5
+        },
+        {
+            player: 'computer',
+            turn: 6
+        },
+        {
+            player: 'player',
+            turn: 7
+        },
+        {
+            player: 'player',
+            turn: 8
+        },
+    ] },
+{
+    name: 'abc',
+    piece: 'x',
+    color: 'red',
+    difficulty: 'easy',
+    outcome: 1,
+    board:[
+        {
+            player: 'computer',
+            turn: 0
+        },
+        {
+            player: null,
+            turn: -1
+        },
+        {
+            player: 'player',
+            turn: 1
+        },
+        {
+            player: null,
+            turn: -1
+        },
+        {
+            player: null,
+            turn: -1
+        },
+        {
+            player: null,
+            turn: -1
+        },
+        {
+            player: null,
+            turn: -1
+        },
+        {
+            player: null,
+            turn: -1
+        },
+        {
+            player: null,
+            turn: -1
+        },
+    ] },
 
 
 
