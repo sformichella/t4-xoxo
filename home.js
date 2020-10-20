@@ -1,8 +1,10 @@
 import { setInLocalStorage, getFromLocalStorage } from './utils.js';
+import { renderHeader } from './header/header.js';
+
 
 const form = document.getElementById('user-form');
 
-
+renderHeader();
 
 
 form.addEventListener('submit', (e) => {

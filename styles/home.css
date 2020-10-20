@@ -1,5 +1,8 @@
 main {
     width: 100%;
+    height: 100%;
+    background-image: url('../assets/football_xs_os.jpg');
+    background-size: cover;
 }
 
 section {
@@ -30,11 +33,6 @@ section {
     font-family: 'Noto Serif', serif;
 }
 
-body {
-    background-image: url('../assets/football_xs_os.jpg');
-    background-size: cover;
-}
-
 li {
     text-align: justify;
     text-justify: inter-word;
@@ -49,4 +47,8 @@ h2 {
 hr {
     margin-top: 15px;
     margin-bottom: 15px;
+}
+
+#icon-group {
+    display: none;
 }
