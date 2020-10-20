@@ -38,6 +38,11 @@ boardForm.addEventListener('click', (e) => {
     // Set Image to X
     const cell = e.target;
 
+    if (cell.src) {
+        return;
+    }
+    
+
     const image = document.createElement('img');
     image.setAttribute('src', '../assets/SingleX.svg');
 
