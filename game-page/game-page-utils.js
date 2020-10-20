@@ -169,3 +169,22 @@ export function doesPlayerWin(board, player) {
 
     return playerWins;
 }
+
+export function pushNewRoundToLocalStorage(){
+
+    const roundObject = {
+        name: 'test' + Math.random(),
+        piece: 'X',
+        color: 'red',
+        difficulty: 'easy',
+        outcome: -2,
+        board: makeFreshBoard()
+    };
+
+    const roundsData = getFromLocalStorage('roundsData');
+
+    roundsData.push(roundObject);
+    console.log(roundsData);
+    setInLocalStorage('roundsData', roundsData);
+
+}
