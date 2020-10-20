@@ -2,9 +2,12 @@ import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
 
 
 
-let wins = 0;
-let losses = 0;
-let cats = 0;
+// let wins = 0;
+// let losses = 0;
+// let cats = 0;
+let wins = localStorage.getItem('Wins');
+let losses = localStorage.getItem('Losses');
+let cats = localStorage.getItem('Cats');
 
 export function renderGameResult(gameResult) {
     const totalWins = document.getElementById('total-wins');
@@ -13,18 +16,21 @@ export function renderGameResult(gameResult) {
 
     if (gameResult === 'player') {
         wins++;
-        totalWins.textContent = wins;
-        localStorage.setItem('Wins', totalWins.textContent);
+        localStorage.setItem('Wins', wins);
+        const winsStored = localStorage.getItem('Wins');
+        totalWins.textContent = winsStored;
     }
     if (gameResult === 'computer') {
         losses++;
-        totalLosses.textContent = losses;
-        localStorage.setItem('Loses', totalLosses.textContent);
+        localStorage.setItem('Losses', losses);
+        const lossesStored = localStorage.getItem('Losses');
+        totalLosses.textContent = lossesStored;
     }
     if (gameResult === 'cat') {
         cats++;
-        totalCats.textContent = cats;
-        localStorage.setItem('Ties', totalCats.textContent);
+        localStorage.setItem('Cats', cats);
+        const catsStored = localStorage.getItem('Cats');
+        totalCats.textContent = catsStored;
     }
 }
 
@@ -48,6 +54,38 @@ export function getComputerMove() {
     }
 
     return rand;
+}
+
+export function cellLocation(string) {
+
+    const semanticLocation = [
+        'top-left',
+        'top-mid',
+        'top-right',
+        'mid-left',
+        'mid-mid',
+        'mid-right',
+        'bottom-left',
+        'bottom-mid',
+        'bottom-right'
+    ];
+
+    return semanticLocation.indexOf(string);
+}
+
+export function cellName(number) {
+    const semanticLocation = [
+        'top-left',
+        'top-mid',
+        'top-right',
+        'mid-left',
+        'mid-mid',
+        'mid-right',
+        'bottom-left',
+        'bottom-mid',
+        'bottom-right'
+    ];
+    return semanticLocation[number];
 }
 
 export function makeFreshBoard() {
@@ -191,7 +229,7 @@ export function pushNewRoundToLocalStorage() {
         board: makeFreshBoard()
     };
 
-    
+
 
     roundsData.push(roundObject);
     setInLocalStorage('roundsData', roundsData);
@@ -225,4 +263,47 @@ export function getUserInfo() {
     userInfo.difficulty = roundData[roundData.length - 1].difficulty;
 
     return userInfo;
+}
+
+export function populateBoardElement(element, boardArray) {
+    // This functions grabs all of the cells from inside
+    // of an outer form element. Then it adds an image 
+    // to each cell depending on the player property of
+    // each object in the boardArray
+
+
+    // Make array of cells inside of the form element
+    const boardNodeList = element.childNodes;
+    const cells = [];
+
+    for (const item of boardNodeList) {
+        if (item.nodeType !== 3) {
+            cells.push(item);
+        }
+    }
+
+    console.log(cells);
+
+    // Loop through each cell and add an image if necessary
+    cells.forEach(cell => {
+        // Get the cell's location number 0 - 8
+        const location = cellLocation(cell.id);
+
+        // If the player is the computer, add an O image to the
+        // cell div
+        if (boardArray[location].player === 'computer') {
+            const cellImage = document.createElement('img');
+                cellImage.setAttribute('src', '../assets/SingleO.svg');
+
+            cell.appendChild(cellImage);
+        } 
+        // Else if the player name is truthy, i.e the player, add
+        // an X image to the cell div
+        else if (boardArray[location].player) {
+            const cellImage = document.createElement('img');
+                cellImage.setAttribute('src', '../assets/SingleX.svg');
+
+            cell.appendChild(cellImage);
+        }
+    })
 }

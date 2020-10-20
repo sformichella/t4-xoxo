@@ -1,7 +1,8 @@
-import { makeBoardElement } from '../utils.js';
+import { makeBoardElement, findByID } from '../utils.js';
+import data from '../data/data.js';
 
-const board = makeBoardElement();
+const boardElement = makeBoardElement();
 
 const body = document.body;
 
-body.appendChild(board);
+body.appendChild(boardElement);

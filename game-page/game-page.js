@@ -1,6 +1,6 @@
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage, setInLocalStorage, gameColorPieceX } from '../utils.js';
-import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage, setOutcomeInteger, getUserInfo } from './game-page-utils.js';
+import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage, setOutcomeInteger, getUserInfo, cellLocation, cellName, populateBoardElement } from './game-page-utils.js';
 
 renderHeader();
 
@@ -12,6 +12,13 @@ userName.textContent = `User: ${userInfo.name}`;
 const difficultyElem = document.getElementById('difficulty');
 difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 
+const totalWins = document.getElementById('total-wins');
+const totalLosses = document.getElementById('total-losses');
+const totalCats = document.getElementById('total-cats');
+
+totalWins.textContent = localStorage.getItem('Wins');
+totalLosses.textContent = localStorage.getItem('Losses');
+totalCats.textContent = localStorage.getItem('Cats');
 
 //grab user input from local storage and set player name and difficulty on page
 
@@ -36,6 +43,10 @@ difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 
 
 const boardForm = document.getElementById('board-form');
+
+const mostRecentRound = getFromLocalStorage('roundsData');
+const mostRecentBoard = mostRecentRound[mostRecentRound.length - 1].board;
+populateBoardElement(boardForm, mostRecentBoard);
 
 boardForm.addEventListener('click', (e) => {
 
@@ -92,37 +103,7 @@ boardForm.addEventListener('click', (e) => {
 
 });
 
-function cellLocation(string) {
 
-    const semanticLocation = [
-        'top-left',
-        'top-mid',
-        'top-right',
-        'mid-left',
-        'mid-mid',
-        'mid-right',
-        'bottom-left',
-        'bottom-mid',
-        'bottom-right'
-    ];
-
-    return semanticLocation.indexOf(string);
-}
-
-function cellName(number) {
-    const semanticLocation = [
-        'top-left',
-        'top-mid',
-        'top-right',
-        'mid-left',
-        'mid-mid',
-        'mid-right',
-        'bottom-left',
-        'bottom-mid',
-        'bottom-right'
-    ];
-    return semanticLocation[number];
-}
 
 function getTurnNumber(boardArray) {
     let numberOfTurns = -1;
@@ -168,7 +149,7 @@ function resetGameBoardDOM() {
         const locationDOM = document.getElementById(location);
         const hasChild = document.getElementById(location).childElementCount;
         if (hasChild === 1) {
-            locationDOM.removeChild(locationDOM.firstChild); 
+            locationDOM.removeChild(locationDOM.firstChild);
         }
     }
 }

@@ -219,7 +219,50 @@ export default [{
             turn: -1
         },
     ] },
-
+{
+    name: 'abc',
+    piece: 'x',
+    color: 'red',
+    difficulty: 'easy',
+    outcome: -1,
+    board:[
+        {
+            player: null,
+            turn: -1
+        },
+        {
+            player:null,
+            turn: -1
+        },
+        {
+            player:null,
+            turn: -1
+        },
+        {
+            player: null,
+            turn: -1
+        },
+        {
+            player: null,
+            turn: -1
+        },
+        {
+            player: null,
+            turn: -1
+        },
+        {
+            player:null,
+            turn: -1
+        },
+        {
+            player: null,
+            turn: -1
+        },
+        {
+            player: null,
+            turn: -1
+        }
+    ] },
 
 
 ];
