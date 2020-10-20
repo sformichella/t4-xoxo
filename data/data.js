@@ -199,8 +199,8 @@ export default [{
             turn: -1
         },
         {
-            player: null,
-            turn: -1
+            player: 'player',
+            turn: 2
         },
         {
             player: null,

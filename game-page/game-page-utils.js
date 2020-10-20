@@ -65,12 +65,15 @@ export function makeFreshBoard() {
 
 export function checkWin(board) {
 
+    let turnCount = 0;
+
     // Find a player in the board and check if they win
     let playerOne;
     
     board.forEach(element => {
         if (element.player) {
             playerOne = element.player;
+            turnCount++;
         }
     })
     
@@ -94,6 +97,12 @@ export function checkWin(board) {
     if (playerTwoWins) {
         return playerTwo;
     };
+
+    console.log(turnCount);
+
+    if (turnCount === 9) {
+        return 'cat';
+    }
 
     return null;
 }
