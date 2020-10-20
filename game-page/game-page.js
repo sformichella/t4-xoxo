@@ -139,6 +139,13 @@ function getTurnNumber(boardArray) {
     return numberOfTurns;
 }
 
+const buttonDiv = document.getElementsByTagName('button')[0];
+
+buttonDiv.addEventListener('click', (e) => {
+
+    pushNewRoundToLocalStorage();
+});
+
 // function getComputerMove() {
 
 //     currentBoard[3].player = 'computer';
