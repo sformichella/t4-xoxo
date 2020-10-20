@@ -2,14 +2,14 @@ import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
 
 
 
+let wins = 0;
+let losses = 0;
+let cats = 0;
+
 export function renderGameResult(gameResult) {
     const totalWins = document.getElementById('total-wins');
     const totalLosses = document.getElementById('total-losses');
     const totalCats = document.getElementById('total-cats');
-
-    let wins = 0;
-    let losses = 0;
-    let cats = 0;
 
     if (gameResult === 'player') {
         wins++;
@@ -194,16 +194,16 @@ export function pushNewRoundToLocalStorage() {
 
 }
 
-export function setOutcomeInteger(winStatus){
-    
+export function setOutcomeInteger(winStatus) {
+
     const roundsArray = getFromLocalStorage('roundsData');
     const currentRound = roundsArray[roundsArray.length - 1];
 
-    if (winStatus === 'player'){
+    if (winStatus === 'player') {
         currentRound.outcome = 1;
-    } else if (winStatus === 'computer'){
+    } else if (winStatus === 'computer') {
         currentRound.outcome = -1;
-    } else if (winStatus === 'cat'){
+    } else if (winStatus === 'cat') {
         currentRound.outcome = 0;
     }
 
@@ -218,7 +218,7 @@ export function getUserInfo() {
     const userInfo = {};
 
     userInfo.name = roundData[roundData.length - 1].name;
-    userInfo.difficulty = roundData [roundData.length - 1].difficulty;
+    userInfo.difficulty = roundData[roundData.length - 1].difficulty;
 
     return userInfo;
 }
