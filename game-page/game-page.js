@@ -1,6 +1,6 @@
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
-import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage, setOutcomeInteger, getUserInfo, cellLocation, cellName } from './game-page-utils.js';
+import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage, setOutcomeInteger, getUserInfo, cellLocation, cellName, populateBoardElement } from './game-page-utils.js';
 
 renderHeader();
 
@@ -36,6 +36,10 @@ difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 
 
 const boardForm = document.getElementById('board-form');
+
+const mostRecentRound = getFromLocalStorage('roundsData');
+const mostRecentBoard = mostRecentRound[mostRecentRound.length - 1].board;
+populateBoardElement(boardForm, mostRecentBoard);
 
 boardForm.addEventListener('click', (e) => {
 

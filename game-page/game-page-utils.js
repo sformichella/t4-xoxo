@@ -265,7 +265,7 @@ export function getUserInfo() {
     return userInfo;
 }
 
-function populateBoardElement(element, boardArray) {
+export function populateBoardElement(element, boardArray) {
     // This functions grabs all of the cells from inside
     // of an outer form element. Then it adds an image 
     // to each cell depending on the player property of
