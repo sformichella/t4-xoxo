@@ -4,10 +4,10 @@ import { getFromLocalStorage } from '../utils.js';
 renderHeader();
 
 const chartWins = getFromLocalStorage('Wins');
-const chartLosses = getFromLocalStorage('Loses');
-const chartTies = getFromLocalStorage('Ties');
-const labels = ['Wins', 'Losses', 'Ties'];
-const chartData = [chartWins, chartLosses, chartTies];
+const chartLosses = getFromLocalStorage('Losses');
+const chartCats = getFromLocalStorage('Cats');
+const labels = ['Wins', 'Losses', 'Cats'];
+const chartData = [chartWins, chartLosses, chartCats];
 const mainChart = document.getElementById('myChart');
 const noData = document.getElementById('no-data');
 
@@ -39,7 +39,7 @@ var myChart = new Chart(ctx, {         //eslint-disable-line
 });
 
 //Handing no data
-if (chartLosses === null && chartWins === null && chartTies === null) {
+if (chartLosses === null && chartWins === null && chartCats === null) {
     //if no data, hide chart, display instructions to play game
     mainChart.style.display = 'none';
     noData.textContent = 'Click \'Reset\' and play some games to populate game history.';
