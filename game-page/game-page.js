@@ -4,13 +4,6 @@ import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage
 
 renderHeader();
 
-const userInfo = getUserInfo();
-
-const userName = document.getElementById('user-name');
-    userName.textContent = `User: ${userInfo.name}`;
-
-const difficultyElem = document.getElementById('difficulty');
-    difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 
 //grab user input from local storage and set player name and difficulty on page
 
@@ -148,6 +141,14 @@ const buttonDiv = document.getElementsByTagName('button')[0];
 buttonDiv.addEventListener('click', () => {
     pushNewRoundToLocalStorage();
     resetGameBoardDOM();
+
+    const userInfo = getUserInfo();
+
+    const userName = document.getElementById('user-name');
+        userName.textContent = `User: ${userInfo.name}`;
+
+    const difficultyElem = document.getElementById('difficulty');
+        difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 });
 
 // function getComputerMove() {
