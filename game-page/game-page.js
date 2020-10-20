@@ -1,4 +1,3 @@
-import { wins } from '../data/data.js';
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
 import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage, setOutcomeInteger } from './game-page-utils.js';
@@ -105,7 +104,7 @@ function cellLocation(string) {
     ];
 
     return semanticLocation.indexOf(string);
-};
+}
 
 function cellName(number) {
     const semanticLocation = [
@@ -138,14 +137,9 @@ function getTurnNumber(boardArray) {
 
 const buttonDiv = document.getElementsByTagName('button')[0];
 
-buttonDiv.addEventListener('click', (e) => {
-<<<<<<< HEAD
+buttonDiv.addEventListener('click', () => {
     pushNewRoundToLocalStorage();
     resetGameBoardDOM();
-=======
-
-    pushNewRoundToLocalStorage();
->>>>>>> 4960386e3d3858d843e1db5686d7742698f0d0fc
 });
 
 // function getComputerMove() {
@@ -160,7 +154,6 @@ buttonDiv.addEventListener('click', (e) => {
 
 //     return 3;
 
-<<<<<<< HEAD
 function resetGameBoardDOM() {
     for (let i = 0; i < 9; i++) {
         const location = cellName(i);
@@ -172,5 +165,3 @@ function resetGameBoardDOM() {
         }
     }
 }
-=======
->>>>>>> 4960386e3d3858d843e1db5686d7742698f0d0fc
