@@ -1,10 +1,5 @@
 import { getFromLocalStorage, setInLocalStorage, gameColorPieceX } from '../utils.js';
 
-
-
-// let wins = 0;
-// let losses = 0;
-// let cats = 0;
 let wins = localStorage.getItem('Wins');
 let losses = localStorage.getItem('Losses');
 let cats = localStorage.getItem('Cats');
@@ -369,4 +364,36 @@ export function executeFullTurn(e){
         //increment localstorage to -1, 0, or 1
         setOutcomeInteger(winStatus);
     }
+}
+
+
+export function resetGameBoardDOM() {
+    for (let i = 0; i < 9; i++) {
+        const location = cellName(i);
+        const locationDOM = document.getElementById(location);
+        const hasChild = document.getElementById(location).childElementCount;
+        if (hasChild === 1) {
+            locationDOM.removeChild(locationDOM.firstChild);
+        }
+    }
+}
+
+export function renderScoreBoard(){
+    const totalWins = document.getElementById('total-wins');
+    const totalLosses = document.getElementById('total-losses');
+    const totalCats = document.getElementById('total-cats');
+
+    totalWins.textContent = localStorage.getItem('Wins');
+    totalLosses.textContent = localStorage.getItem('Losses');
+    totalCats.textContent = localStorage.getItem('Cats');
+}
+
+export function renderUserInfo(){
+    const userInfo = getUserInfo();
+
+    const userName = document.getElementById('user-name');
+    userName.textContent = `User: ${userInfo.name}`;
+
+    const difficultyElem = document.getElementById('difficulty');
+    difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 }
