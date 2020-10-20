@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/game-page.css">
+    <link rel="stylesheet" href="../styles/header.css">
 </head>
 
 <body>
@@ -20,17 +21,17 @@
 
     <main class="flex-row">
         <section>
-            <div class='game-board'>
-                <div id="top-left">x</div>
-                <div id="top-mid">x</div>
-                <div id="top-right">x</div>
-                <div id="mid-left">x</div>
-                <div id="mid-mid">x</div>
-                <div id="mid-right">o</div>
-                <div id="bottom-left">o</div>
-                <div id="bottom-mid">o</div>
-                <div id="bottom-right">o</div>
-            </div>
+            <form id="board-form" class='game-board'>
+                <div id="top-left" class="game-cell"></div>
+                <div id="top-mid" class="game-cell"></div>
+                <div id="top-right" class="game-cell"></div>
+                <div id="mid-left" class="game-cell"></div>
+                <div id="mid-mid" class="game-cell"></div>
+                <div id="mid-right" class="game-cell"></div>
+                <div id="bottom-left" class="game-cell"></div>
+                <div id="bottom-mid" class="game-cell"></div>
+                <div id="bottom-right" class="game-cell"></div>
+            </form>
         </section>
 
         <section class="flex-column player-info">

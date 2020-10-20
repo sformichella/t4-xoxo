@@ -1,11 +1,9 @@
 import { setInLocalStorage, getFromLocalStorage } from './utils.js';
 import { renderHeader } from './header/header.js';
 
-
-const form = document.getElementById('user-form');
-
 renderHeader();
 
+const form = document.getElementById('user-form');
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -23,7 +21,7 @@ form.addEventListener('submit', (e) => {
 
     const boardSquare = {
         player: null,
-        turn: null
+        turn: -1
     };
 
     const boardArray = [];
@@ -36,5 +34,7 @@ form.addEventListener('submit', (e) => {
     roundsArray.push(roundObject);
 
     setInLocalStorage('roundsData', roundsArray);
+
+    window.location.replace('./game-page/index.html');
 });
 

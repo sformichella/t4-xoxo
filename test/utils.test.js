@@ -1,9 +1,10 @@
-// IMPORT MODULES under test here:
-// import { example } from '../example.js';
+import { cellLocation } from '../game-page/game-page-utils.js';
+
+
 
 const test = QUnit.test;
 
-test('time to test a function', (expect) => {
+test('cellLocation should take in a location string and return a number', (expect) => {
     //Arrange
     // Set up your arguments and expectations
     const expected = true;
