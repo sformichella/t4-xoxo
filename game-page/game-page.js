@@ -1,6 +1,7 @@
+import { wins } from '../data/data.js';
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
-import { getComputerMove } from './game-page-utils.js';
+import { checkWin, getComputerMove } from './game-page-utils.js';
 
 renderHeader();
 
@@ -24,13 +25,15 @@ renderHeader();
 //check if computer won
 //check if 9 move occurred
 
-const roundsData = getFromLocalStorage('roundsData');
-const currentBoard = roundsData[roundsData.length - 1].board;
+
 
 
 const boardForm = document.getElementById('board-form');
 
 boardForm.addEventListener('click', (e) => {
+
+    const roundsData = getFromLocalStorage('roundsData');
+    const currentBoard = roundsData[roundsData.length - 1].board;
 
     // Set Image to X
     const cell = e.target;
@@ -53,24 +56,31 @@ boardForm.addEventListener('click', (e) => {
     roundsData[roundsData.length - 1].board = currentBoard;
     setInLocalStorage('roundsData', roundsData);
 
+    let winStatus = checkWin(currentBoard);
 
+    if (winStatus === null) {
+        const computersMove = getComputerMove();
+        const computerCell = document.getElementById(cellName(computersMove));
 
-    const computersMove = getComputerMove();
-    const computerCell = document.getElementById(cellName(computersMove));
+        const compImage = document.createElement('img');
+        compImage.setAttribute('src', '../assets/SingleO.svg');
+        computerCell.appendChild(compImage);
 
-    const compImage = document.createElement('img');
-    compImage.setAttribute('src', '../assets/SingleO.svg');
-    computerCell.appendChild(compImage);
+        currentBoard[computersMove].player = 'computer';
 
-    currentBoard[cellNumber].player = 'computer';
+        numberOfTurns = getTurnNumber(currentBoard) + 1;
+        currentBoard[computersMove].turn = numberOfTurns;
 
-    numberOfTurns = getTurnNumber(currentBoard) + 1;
-    currentBoard[computersMove].turn = numberOfTurns;
+        roundsData[roundsData.length - 1].board = currentBoard;
+        setInLocalStorage('roundsData', roundsData);
 
-    roundsData[roundsData.length - 1].board = currentBoard;
-    setInLocalStorage('roundsData', roundsData);
+        winStatus = checkWin(currentBoard);
+    }
 
-
+    if (winStatus) {
+        console.log(winStatus); 
+        console.log('Reset the board!');
+    }
 
 });
 
