@@ -110,16 +110,15 @@ function getTurnNumber(boardArray) {
     return numberOfTurns;
 }
 
-function getComputerMove() {
+// function getComputerMove() {
 
-    currentBoard[3].player = 'computer';
+//     currentBoard[3].player = 'computer';
 
-    const numberOfTurns = getTurnNumber(currentBoard) + 1;
-    currentBoard[3].turn = numberOfTurns;
+//     const numberOfTurns = getTurnNumber(currentBoard) + 1;
+//     currentBoard[3].turn = numberOfTurns;
 
-    roundsData[roundsData.length - 1].board = currentBoard;
-    setInLocalStorage('roundsData', roundsData);
+//     roundsData[roundsData.length - 1].board = currentBoard;
+//     setInLocalStorage('roundsData', roundsData);
 
-    return 3;
+//     return 3;
 
-}
