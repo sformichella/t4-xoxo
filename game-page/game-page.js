@@ -83,9 +83,8 @@ boardForm.addEventListener('click', (e) => {
     }
 
     if (winStatus) {
-        console.log(winStatus);
-        console.log('Reset the board!');
         renderGameResult(winStatus);
+
     }
 
 });

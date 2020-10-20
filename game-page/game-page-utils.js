@@ -14,14 +14,17 @@ export function renderGameResult(gameResult) {
     if (gameResult === 'player') {
         wins++;
         totalWins.textContent = wins;
+        localStorage.setItem('Wins', totalWins.textContent);
     }
     if (gameResult === 'computer') {
         losses++;
         totalLosses.textContent = losses;
+        localStorage.setItem('Loses', totalLosses.textContent);
     }
     if (gameResult === 'cat') {
         cats++;
         totalCats.textContent = cats;
+        localStorage.setItem('Ties', totalCats.textContent);
     }
 }
 
