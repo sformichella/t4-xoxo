@@ -21,3 +21,43 @@ export function getComputerMove(){
 
     return rand;
 }
+
+export function makeFreshBoard() {
+    const newBoard = [{
+        player: null,
+        turn: null
+    },
+    {
+        player: null,
+        turn: null
+    },
+    {
+        player: null,
+        turn: null
+    },
+    {
+        player:null,
+        turn: null
+    },
+    {
+        player:null,
+        turn: null
+    },
+    {
+        player:null,
+        turn: null
+    },
+    {
+        player:null,
+        turn: null
+    },
+    {
+        player: null,
+        turn: null
+    },
+    {
+        player: null,
+        turn: null
+    }];
+    return newBoard;    
+}
