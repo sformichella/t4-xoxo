@@ -313,7 +313,7 @@ export function executeFullTurn(e){
     }
 
     //sets color of X piece
-    cell.innerHTML = gameColorPieceX(roundsData[0].color);
+    cell.innerHTML = gameColorPieceX(roundsData[roundsData.length - 1].color);
 
     // index of clicked  cell
     const cellNumber = cellLocation(cell.id);
