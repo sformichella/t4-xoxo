@@ -194,3 +194,21 @@ export function pushNewRoundToLocalStorage() {
     setInLocalStorage('roundsData', roundsData);
 
 }
+
+export function setOutcomeInteger(winStatus){
+    
+    const roundsArray = getFromLocalStorage('roundsData');
+    const currentRound = roundsArray[roundsArray.length - 1];
+
+    if (winStatus === 'player'){
+        currentRound.outcome = 1;
+    } else if (winStatus === 'computer'){
+        currentRound.outcome = -1;
+    } else if (winStatus === 'cat'){
+        currentRound.outcome = 0;
+    }
+
+    roundsArray[roundsArray.length - 1] = currentRound;
+    setInLocalStorage('roundsData', roundsArray);
+
+}
