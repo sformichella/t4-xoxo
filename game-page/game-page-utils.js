@@ -84,15 +84,18 @@ export function checkWin(board) {
         }
     })
     
-    const playerOneMoves = [];
+    const playerOneMoves = getPlayerMoves(playerOne);
+    let playerOneWins;
 
-    board.forEach(element => {
-        if (element.player === playerOne) {
-            playerOneMoves.push(board.indexOf(element));
+    winConditions.forEach(win => {
+        if (
+            win.every(el => {
+                return playerOneMoves.indexOf(el) !== -1;
+            })
+        ) {
+            playerOneWins = true;
         }
     })
-
-
 
     // board.forEach(element => {
     //     if (element.player) {
@@ -136,4 +139,33 @@ export function getPlayerMoves(gameBoard, playerString) {
     })
 
     return playerMoves;
+}
+
+export function doesPlayerWin(board, player) {
+    const moves = getPlayerMoves(board, player);
+
+    const winConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [2, 4, 6],
+        [0, 4, 8]
+    ];
+
+    let playerWins = false;
+
+    winConditions.forEach(win => {
+        if (
+            win.every(el => {
+                return moves.indexOf(el) !== -1;
+            })
+        ) {
+            playerWins = true;
+        }
+    })
+
+    return playerWins;
 }

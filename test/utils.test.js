@@ -1,4 +1,4 @@
-import { checkWin, getPlayerMoves } from '../game-page/game-page-utils.js';
+import { checkWin, getPlayerMoves, doesPlayerWin } from '../game-page/game-page-utils.js';
 
 import gameData from '../data/data.js'
 
@@ -16,3 +16,14 @@ test('getPlayer moves should take in a game board array and a string and return 
 
     expect.deepEqual(actual, expected);
 });
+
+test('test win check thing', (expect) => {
+    const board = gameData[0].board;
+    const player = 'player';
+
+    const actual = doesPlayerWin(board, player)
+
+    const expected = true;
+
+    expect.equal(actual, expected);
+})
