@@ -139,8 +139,13 @@ function getTurnNumber(boardArray) {
 const buttonDiv = document.getElementsByTagName('button')[0];
 
 buttonDiv.addEventListener('click', (e) => {
+<<<<<<< HEAD
+    pushNewRoundToLocalStorage();
+    resetGameBoardDOM();
+=======
 
     pushNewRoundToLocalStorage();
+>>>>>>> 4960386e3d3858d843e1db5686d7742698f0d0fc
 });
 
 // function getComputerMove() {
@@ -155,3 +160,17 @@ buttonDiv.addEventListener('click', (e) => {
 
 //     return 3;
 
+<<<<<<< HEAD
+function resetGameBoardDOM() {
+    for (let i = 0; i < 9; i++) {
+        const location = cellName(i);
+        const locationDOM = document.getElementById(location);
+        const hasChild = document.getElementById(location).childElementCount;
+        console.log(hasChild);
+        if (hasChild === 1) {
+            locationDOM.removeChild(locationDOM.firstChild); 
+        }
+    }
+}
+=======
+>>>>>>> 4960386e3d3858d843e1db5686d7742698f0d0fc
