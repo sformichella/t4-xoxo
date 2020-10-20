@@ -27,3 +27,13 @@ test('test win check thing', (expect) => {
 
     expect.equal(actual, expected);
 })
+
+test('checkWin should take in a board array and return a string if a player wins and null if no one wins', (expect) => {
+    const board = gameData[4].board;
+
+    const expected = null;
+
+    const actual = checkWin(board);
+
+    expect.equal(actual, expected); 
+})
