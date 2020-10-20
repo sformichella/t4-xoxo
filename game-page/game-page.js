@@ -1,7 +1,7 @@
 import { wins } from '../data/data.js';
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
-import { checkWin, getComputerMove, renderGameResult } from './game-page-utils.js';
+import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage } from './game-page-utils.js';
 
 renderHeader();
 
@@ -138,6 +138,13 @@ function getTurnNumber(boardArray) {
 
     return numberOfTurns;
 }
+
+const buttonDiv = document.getElementsByTagName('button')[0];
+
+buttonDiv.addEventListener('click', (e) => {
+
+    pushNewRoundToLocalStorage();
+});
 
 // function getComputerMove() {
 
