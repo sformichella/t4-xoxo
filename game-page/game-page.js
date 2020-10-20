@@ -44,7 +44,7 @@ boardForm.addEventListener('click', (e) => {
     // Set Image to X
     const cell = e.target;
 
-    if (cell.src) {
+    if (cell.src || roundsData[roundsData.length - 1].outcome > -2) {
         return;
     }
 
