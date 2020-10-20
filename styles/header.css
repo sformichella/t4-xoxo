@@ -6,6 +6,7 @@ header {
     box-shadow: var(--shadow);
     position: relative;
     border-bottom: 1px solid black;
+    background: linear-gradient(90deg, rgba(55,61,94,1) 0%, rgba(45,65,70,1) 100%);
 }
 
 .header-label{
