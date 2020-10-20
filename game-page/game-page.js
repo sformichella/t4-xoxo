@@ -1,5 +1,5 @@
 import { renderHeader } from '../header/header.js';
-import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
+import { getFromLocalStorage, setInLocalStorage, gameColorPieceX } from '../utils.js';
 import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage, setOutcomeInteger, getUserInfo, cellLocation, cellName, populateBoardElement } from './game-page-utils.js';
 
 renderHeader();
@@ -60,12 +60,7 @@ boardForm.addEventListener('click', (e) => {
         return;
     }
 
-
-    const image = document.createElement('img');
-    image.setAttribute('src', '../assets/SingleX.svg');
-
-    cell.appendChild(image);
-
+    cell.innerHTML = gameColorPieceX(roundsData[0].color);
 
     // Adjust Board Object in localStorage
     const cellNumber = cellLocation(cell.id);
