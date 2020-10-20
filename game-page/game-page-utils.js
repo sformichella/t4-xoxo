@@ -195,6 +195,7 @@ export function pushNewRoundToLocalStorage() {
 
 }
 
+<<<<<<< HEAD
 export function getUserInfo() {
     const roundData = getFromLocalStorage('roundsData');
 
@@ -204,4 +205,22 @@ export function getUserInfo() {
     userInfo.difficulty = roundData [roundData.length - 1].difficulty;
 
     return userInfo;
+=======
+export function setOutcomeInteger(winStatus){
+    
+    const roundsArray = getFromLocalStorage('roundsData');
+    const currentRound = roundsArray[roundsArray.length - 1];
+
+    if (winStatus === 'player'){
+        currentRound.outcome = 1;
+    } else if (winStatus === 'computer'){
+        currentRound.outcome = -1;
+    } else if (winStatus === 'cat'){
+        currentRound.outcome = 0;
+    }
+
+    roundsArray[roundsArray.length - 1] = currentRound;
+    setInLocalStorage('roundsData', roundsArray);
+
+>>>>>>> ccf3957f3840e0d11dcead6c1ff0080540b73f1d
 }

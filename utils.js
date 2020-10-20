@@ -34,9 +34,12 @@ export function makeBoardElement() {
 
     cells.forEach(cellName => {
         const cell = document.createElement('div');
+            cell.id = cellName
             cell.classList.add('game-cell');
-        form.appendChild(cell);
+        boardContainer.appendChild(cell);
     });
 
-    form.classList.add('game-board');
+    boardContainer.classList.add('game-board');
+
+    return boardContainer
 }

@@ -1,7 +1,7 @@
 import { wins } from '../data/data.js';
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
-import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage } from './game-page-utils.js';
+import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage, setOutcomeInteger } from './game-page-utils.js';
 
 renderHeader();
 
@@ -84,13 +84,11 @@ boardForm.addEventListener('click', (e) => {
 
     if (winStatus) {
         renderGameResult(winStatus);
-
+        console.log(winStatus);
+        setOutcomeInteger(winStatus);
     }
 
 });
-
-
-
 
 function cellLocation(string) {
 
