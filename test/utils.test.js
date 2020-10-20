@@ -17,6 +17,20 @@ test('getPlayer moves should take in a game board array and a string and return 
     expect.deepEqual(actual, expected);
 });
 
+
+
+
+test('getPlayer moves should take in a game board array and a string and return an array of that players moves', (expect) => {
+    const boardOne = gameData[2].board;
+    const player = 'player';
+
+    const expected = [0, 1, 4, 8];
+
+    const actual = getPlayerMoves(boardOne, player);
+
+    expect.deepEqual(actual, expected);
+});
+
 test('test win check thing', (expect) => {
     const board = gameData[0].board;
     const player = 'player';
@@ -35,5 +49,5 @@ test('checkWin should take in a board array and return a string if a player wins
 
     const actual = checkWin(board);
 
-    expect.equal(actual, expected); 
+    expect.equal(actual, expected);
 })
