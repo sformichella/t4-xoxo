@@ -4,6 +4,14 @@ import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage
 
 renderHeader();
 
+const userInfo = getUserInfo();
+
+const userName = document.getElementById('user-name');
+userName.textContent = `User: ${userInfo.name}`;
+
+const difficultyElem = document.getElementById('difficulty');
+difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
+
 
 //grab user input from local storage and set player name and difficulty on page
 
@@ -84,7 +92,6 @@ boardForm.addEventListener('click', (e) => {
 
     if (winStatus) {
         renderGameResult(winStatus);
-        console.log(winStatus);
         setOutcomeInteger(winStatus);
     }
 
@@ -145,30 +152,17 @@ buttonDiv.addEventListener('click', () => {
     const userInfo = getUserInfo();
 
     const userName = document.getElementById('user-name');
-        userName.textContent = `User: ${userInfo.name}`;
+    userName.textContent = `User: ${userInfo.name}`;
 
     const difficultyElem = document.getElementById('difficulty');
-        difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
+    difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 });
-
-// function getComputerMove() {
-
-//     currentBoard[3].player = 'computer';
-
-//     const numberOfTurns = getTurnNumber(currentBoard) + 1;
-//     currentBoard[3].turn = numberOfTurns;
-
-//     roundsData[roundsData.length - 1].board = currentBoard;
-//     setInLocalStorage('roundsData', roundsData);
-
-//     return 3;
 
 function resetGameBoardDOM() {
     for (let i = 0; i < 9; i++) {
         const location = cellName(i);
         const locationDOM = document.getElementById(location);
         const hasChild = document.getElementById(location).childElementCount;
-        console.log(hasChild);
         if (hasChild === 1) {
             locationDOM.removeChild(locationDOM.firstChild); 
         }
