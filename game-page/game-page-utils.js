@@ -191,3 +191,14 @@ export function pushNewRoundToLocalStorage() {
     setInLocalStorage('roundsData', roundsData);
 
 }
+
+export function getUserInfo() {
+    const roundData = getFromLocalStorage('roundsData');
+
+    const userInfo = {};
+
+    userInfo.name = roundData[roundData.length - 1].name;
+    userInfo.difficulty = roundData [roundData.length - 1].difficulty;
+
+    return userInfo;
+}
