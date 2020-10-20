@@ -1,6 +1,6 @@
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
-import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage, setOutcomeInteger, getUserInfo } from './game-page-utils.js';
+import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage, setOutcomeInteger, getUserInfo, cellLocation, cellName } from './game-page-utils.js';
 
 renderHeader();
 
@@ -97,37 +97,7 @@ boardForm.addEventListener('click', (e) => {
 
 });
 
-function cellLocation(string) {
 
-    const semanticLocation = [
-        'top-left',
-        'top-mid',
-        'top-right',
-        'mid-left',
-        'mid-mid',
-        'mid-right',
-        'bottom-left',
-        'bottom-mid',
-        'bottom-right'
-    ];
-
-    return semanticLocation.indexOf(string);
-}
-
-function cellName(number) {
-    const semanticLocation = [
-        'top-left',
-        'top-mid',
-        'top-right',
-        'mid-left',
-        'mid-mid',
-        'mid-right',
-        'bottom-left',
-        'bottom-mid',
-        'bottom-right'
-    ];
-    return semanticLocation[number];
-}
 
 function getTurnNumber(boardArray) {
     let numberOfTurns = -1;
