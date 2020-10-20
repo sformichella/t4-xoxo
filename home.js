@@ -1,4 +1,4 @@
-import { setInLocalStorage, getFromLocalStorage } from './utils.js';
+import { setInLocalStorage } from './utils.js';
 import { renderHeader } from './header/header.js';
 
 renderHeader();
@@ -6,6 +6,16 @@ renderHeader();
 localStorage.clear();
 
 const form = document.getElementById('user-form');
+
+//Specific to homepage fixes for pathing
+const devsImage = document.getElementById('devs');
+devsImage.setAttribute('src', './assets/devs.svg');
+const homeImage = document.getElementById('home');
+homeImage.setAttribute('src', './assets/reset.svg');
+const anchorTag = document.querySelectorAll('a');
+anchorTag[0].setAttribute('href', './index.html');
+anchorTag[3].setAttribute('href', './about/index.html');
+
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();

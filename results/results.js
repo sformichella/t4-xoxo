@@ -1,12 +1,10 @@
 import { renderHeader } from '../header/header.js';
-import { wins, losses, ties } from '../data/data.js';
-import arrayOfRounds from '../data/data.js';
-import {getFromLocalStorage} from '../utils.js';
+import { getFromLocalStorage } from '../utils.js';
 
 renderHeader();
 
 const chartWins = getFromLocalStorage('Wins');
-const chartLosses = getFromLocalStorage('Losses');
+const chartLosses = getFromLocalStorage('Loses');
 const chartTies = getFromLocalStorage('Ties');
 const labels = ['Wins', 'Losses', 'Ties'];
 const chartData = [chartWins, chartLosses, chartTies];
