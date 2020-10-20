@@ -1,4 +1,4 @@
-import { getFromLocalStorage } from '../utils.js';
+import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
 
 
 
@@ -50,39 +50,39 @@ export function getComputerMove() {
 export function makeFreshBoard() {
     const newBoard = [{
         player: null,
-        turn: null
+        turn: -1
     },
     {
         player: null,
-        turn: null
+        turn: -1
     },
     {
         player: null,
-        turn: null
+        turn: -1
     },
     {
         player: null,
-        turn: null
+        turn: -1
     },
     {
         player: null,
-        turn: null
+        turn: -1
     },
     {
         player: null,
-        turn: null
+        turn: -1
     },
     {
         player: null,
-        turn: null
+        turn: -1
     },
     {
         player: null,
-        turn: null
+        turn: -1
     },
     {
         player: null,
-        turn: null
+        turn: -1
     }];
     return newBoard;
 }
