@@ -54,6 +54,7 @@ boardForm.addEventListener('click', (e) => {
     setInLocalStorage('roundsData', roundsData);
 
 
+
     const computersMove = getComputerMove();
     const computerCell = document.getElementById(cellName(computersMove));
 
@@ -61,8 +62,10 @@ boardForm.addEventListener('click', (e) => {
     compImage.setAttribute('src', '../assets/SingleO.svg');
     computerCell.appendChild(compImage);
 
+    currentBoard[cellNumber].player = 'computer';
+
     numberOfTurns = getTurnNumber(currentBoard) + 1;
-    currentBoard[cellNumber].turn = numberOfTurns;
+    currentBoard[computersMove].turn = numberOfTurns;
 
     roundsData[roundsData.length - 1].board = currentBoard;
     setInLocalStorage('roundsData', roundsData);
