@@ -1,7 +1,7 @@
 import { wins } from '../data/data.js';
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
-import { checkWin, getComputerMove } from './game-page-utils.js';
+import { checkWin, getComputerMove, renderGameResult } from './game-page-utils.js';
 
 renderHeader();
 
@@ -27,7 +27,6 @@ renderHeader();
 
 
 
-
 const boardForm = document.getElementById('board-form');
 
 boardForm.addEventListener('click', (e) => {
@@ -41,7 +40,7 @@ boardForm.addEventListener('click', (e) => {
     if (cell.src) {
         return;
     }
-    
+
 
     const image = document.createElement('img');
     image.setAttribute('src', '../assets/SingleX.svg');
@@ -80,11 +79,13 @@ boardForm.addEventListener('click', (e) => {
         setInLocalStorage('roundsData', roundsData);
 
         winStatus = checkWin(currentBoard);
+
     }
 
     if (winStatus) {
-        console.log(winStatus); 
+        console.log(winStatus);
         console.log('Reset the board!');
+        renderGameResult(winStatus);
     }
 
 });
