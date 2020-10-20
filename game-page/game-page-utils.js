@@ -89,43 +89,16 @@ export function cellName(number) {
 }
 
 export function makeFreshBoard() {
-    const newBoard = [{
+    const boardSquare = {
         player: null,
         turn: -1
-    },
-    {
-        player: null,
-        turn: -1
-    },
-    {
-        player: null,
-        turn: -1
-    },
-    {
-        player: null,
-        turn: -1
-    },
-    {
-        player: null,
-        turn: -1
-    },
-    {
-        player: null,
-        turn: -1
-    },
-    {
-        player: null,
-        turn: -1
-    },
-    {
-        player: null,
-        turn: -1
-    },
-    {
-        player: null,
-        turn: -1
-    }];
-    return newBoard;
+    };
+
+    const boardArray = [];
+    for (let i = 0; i < 9; i++){
+        boardArray.push(boardSquare);
+    }
+    return boardArray;
 }
 
 
@@ -293,7 +266,7 @@ export function populateBoardElement(element, boardArray) {
         // cell div
         if (boardArray[location].player === 'computer') {
             const cellImage = document.createElement('img');
-                cellImage.setAttribute('src', '../assets/SingleO.svg');
+            cellImage.setAttribute('src', '../assets/SingleO.svg');
 
             cell.appendChild(cellImage);
         } 
@@ -301,9 +274,23 @@ export function populateBoardElement(element, boardArray) {
         // an X image to the cell div
         else if (boardArray[location].player) {
             const cellImage = document.createElement('img');
-                cellImage.setAttribute('src', '../assets/SingleX.svg');
+            cellImage.setAttribute('src', '../assets/SingleX.svg');
 
             cell.appendChild(cellImage);
         }
-    })
+    });
+}
+
+export function getTurnNumber(boardArray) {
+    let numberOfTurns = -1;
+
+    boardArray.forEach(
+        element => {
+            if (element.turn > numberOfTurns) {
+                numberOfTurns = element.turn;
+            }
+        }
+    );
+
+    return numberOfTurns;
 }

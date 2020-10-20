@@ -1,5 +1,6 @@
 import { setInLocalStorage } from './utils.js';
 import { renderHeader } from './header/header.js';
+import { makeFreshBoard } from './game-page/game-page-utils.js';
 
 renderHeader();
 
@@ -28,20 +29,11 @@ form.addEventListener('submit', (e) => {
         piece: formData.get('piece'),
         color: formData.get('color'),
         difficulty: formData.get('game-style'),
-        outcome: -2
+        outcome: -2,
+        board: makeFreshBoard()
+
     };
 
-    const boardSquare = {
-        player: null,
-        turn: -1
-    };
-
-    const boardArray = [];
-    for (let i = 0; i < 9; i++){
-        boardArray.push(boardSquare);
-    }
-
-    roundObject.board = boardArray;
     const roundsArray = [];
     roundsArray.push(roundObject);
 
