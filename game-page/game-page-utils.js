@@ -1,6 +1,31 @@
 import { getFromLocalStorage } from '../utils.js';
 
-export function getComputerMove(){
+
+
+export function renderGameResult(gameResult) {
+    const totalWins = document.getElementById('total-wins');
+    const totalLosses = document.getElementById('total-losses');
+    const totalCats = document.getElementById('total-cats');
+
+    let wins = 0;
+    let losses = 0;
+    let cats = 0;
+
+    if (gameResult === 'player') {
+        wins++;
+        totalWins.textContent = wins;
+    }
+    if (gameResult === 'computer') {
+        losses++;
+        totalLosses.textContent = losses;
+    }
+    if (gameResult === 'cat') {
+        cats++;
+        totalCats.textContent = cats;
+    }
+}
+
+export function getComputerMove() {
 
     const taken = [];
 
@@ -12,9 +37,9 @@ export function getComputerMove(){
             taken.push(i);
         }
     }
- 
+
     let rand = Math.floor(Math.random() * 9);
-    
+
     while (taken.includes(rand)) {
         rand = Math.floor(Math.random() * 9);
     }
@@ -36,19 +61,19 @@ export function makeFreshBoard() {
         turn: null
     },
     {
-        player:null,
+        player: null,
         turn: null
     },
     {
-        player:null,
+        player: null,
         turn: null
     },
     {
-        player:null,
+        player: null,
         turn: null
     },
     {
-        player:null,
+        player: null,
         turn: null
     },
     {
@@ -59,7 +84,7 @@ export function makeFreshBoard() {
         player: null,
         turn: null
     }];
-    return newBoard;    
+    return newBoard;
 }
 
 
@@ -69,14 +94,14 @@ export function checkWin(board) {
 
     // Find a player in the board and check if they win
     let playerOne;
-    
+
     board.forEach(element => {
         if (element.player) {
             playerOne = element.player;
             turnCount++;
         }
     })
-    
+
     const playerOneWins = doesPlayerWin(board, playerOne);
 
     if (playerOneWins) {
@@ -148,7 +173,7 @@ export function doesPlayerWin(board, player) {
     return playerWins;
 }
 
-export function pushNewRoundToLocalStorage(){
+export function pushNewRoundToLocalStorage() {
 
     const roundObject = {
         name: 'test' + Math.random(),
