@@ -7,7 +7,7 @@ main {
 
 section {
     width: 400px;
-    margin: 10px;
+    margin: 50px;
 }
 
 input[type="text"] {
@@ -49,6 +49,7 @@ hr {
     margin-bottom: 15px;
 }
 
-#icon-group {
+#play-div, #results-div{
+    display: none;
     display: none;
 }
