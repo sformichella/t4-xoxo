@@ -1,8 +1,16 @@
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage, setInLocalStorage } from '../utils.js';
-import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage, setOutcomeInteger } from './game-page-utils.js';
+import { checkWin, getComputerMove, renderGameResult, pushNewRoundToLocalStorage, setOutcomeInteger, getUserInfo } from './game-page-utils.js';
 
 renderHeader();
+
+const userInfo = getUserInfo();
+
+const userName = document.getElementById('user-name');
+    userName.textContent = `User: ${userInfo.name}`;
+
+const difficultyElem = document.getElementById('difficulty');
+    difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 
 //grab user input from local storage and set player name and difficulty on page
 
