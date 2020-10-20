@@ -2,15 +2,16 @@
 main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-image: url('../assets/football_xs_os.jpg');
     background-size: cover;
     height: 100%;
+    
 }
 
 h1 {
     color: white;
+    margin-top: 50px;
 }
 
 img {
@@ -32,4 +33,11 @@ img {
     border-radius: 5px;
     margin: 10px;
     padding: 5px;
+}
+
+#play-div, #results-div{
+
+    display: none;
+    display: none;
+
 }

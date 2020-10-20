@@ -3,6 +3,8 @@ import { renderHeader } from './header/header.js';
 
 renderHeader();
 
+localStorage.clear();
+
 const form = document.getElementById('user-form');
 
 form.addEventListener('submit', (e) => {
