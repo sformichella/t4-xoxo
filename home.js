@@ -1,7 +1,9 @@
 import { setInLocalStorage, getFromLocalStorage } from './utils.js';
-import { renderHeader } from '../header/header.js';
+import { renderHeader } from './header/header.js';
 
 renderHeader();
+
+localStorage.clear();
 
 const form = document.getElementById('user-form');
 

@@ -23,3 +23,98 @@ html, body {
     justify-content: center;
     align-items: center;
 }
+
+
+
+
+/* Game Board Styles */
+
+.game-board {
+    display: grid;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+
+    justify-content: center;
+
+    width: 480px;
+    padding: 10px;
+
+    background-color: lightblue;
+
+    border-radius: 1%;
+}
+
+.game-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#top-left { 
+    border-bottom: 2px solid #3F58DF;
+    border-right: 2px solid #3F58DF;
+
+    grid-column: 1; 
+    grid-row: 1;
+
+}
+
+#top-mid {
+    border-bottom: 2px solid #3F58DF;
+    border-right: 2px solid #3F58DF;
+    border-left: 2px solid #3F58DF;
+    grid-column: 2;
+    grid-row: 1;
+    }
+
+#top-right {
+    border-bottom: 2px solid #3F58DF;
+    border-left: 2px solid #3F58DF;
+    grid-column: 3;
+    grid-row: 1;
+
+}
+
+#mid-mid {
+    border: 2px solid #3F58DF;
+    grid-column: 2;
+    grid-row: 2;
+}
+
+#mid-left {
+    border: 2px solid #3F58DF;
+    border-left: 0;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+#mid-right {
+    border: 2px solid #3F58DF;
+    border-right: 0;
+    grid-column: 3;
+    grid-row: 2;
+}
+
+#bottom-left {
+    border: 2px solid #3F58DF;
+    border-bottom: 0;
+    border-left: 0;
+    grid-column: 1;
+    grid-row: 3;
+}
+
+#bottom-right {
+    border: 2px solid #3F58DF;
+    border-bottom: 0;
+    border-right: 0;
+    grid-column: 3;
+    grid-row: 3;
+
+}
+
+#bottom-mid {
+    border: 2px solid #3F58DF;
+    border-bottom: 0;
+    grid-column: 2;
+    grid-row: 3;
+}
