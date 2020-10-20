@@ -195,6 +195,17 @@ export function pushNewRoundToLocalStorage() {
 
 }
 
+<<<<<<< HEAD
+export function getUserInfo() {
+    const roundData = getFromLocalStorage('roundsData');
+
+    const userInfo = {};
+
+    userInfo.name = roundData[roundData.length - 1].name;
+    userInfo.difficulty = roundData [roundData.length - 1].difficulty;
+
+    return userInfo;
+=======
 export function setOutcomeInteger(winStatus){
     
     const roundsArray = getFromLocalStorage('roundsData');
@@ -211,4 +222,5 @@ export function setOutcomeInteger(winStatus){
     roundsArray[roundsArray.length - 1] = currentRound;
     setInLocalStorage('roundsData', roundsArray);
 
+>>>>>>> ccf3957f3840e0d11dcead6c1ff0080540b73f1d
 }

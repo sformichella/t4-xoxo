@@ -16,3 +16,30 @@ export function findByID(array, id){
     }
     return null;
 }
+
+export function makeBoardElement() {
+    const boardContainer = document.createElement('form');
+
+    const cells = [
+        'top-left',
+        'top-mid',
+        'top-right',
+        'mid-left',
+        'mid-mid',
+        'mid-right',
+        'bottom-left',
+        'bottom-mid',
+        'bottom-right'
+    ];
+
+    cells.forEach(cellName => {
+        const cell = document.createElement('div');
+            cell.id = cellName
+            cell.classList.add('game-cell');
+        boardContainer.appendChild(cell);
+    });
+
+    boardContainer.classList.add('game-board');
+
+    return boardContainer
+}
