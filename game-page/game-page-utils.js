@@ -103,13 +103,13 @@ export function checkWin(board) {
             playerOne = element.player;
             turnCount++;
         }
-    })
+    });
 
     const playerOneWins = doesPlayerWin(board, playerOne);
 
     if (playerOneWins) {
         return playerOne;
-    };
+    }
 
     // Find the other player in the board and check if they win
     let playerTwo;
@@ -118,13 +118,13 @@ export function checkWin(board) {
         if (element.player && element.player !== playerOne) {
             playerTwo = element.player;
         }
-    })
+    });
 
     const playerTwoWins = doesPlayerWin(board, playerTwo);
 
     if (playerTwoWins) {
         return playerTwo;
-    };
+    }
 
 
     if (turnCount === 9) {
@@ -142,7 +142,7 @@ export function getPlayerMoves(gameBoard, playerString) {
         if (element.player === playerString) {
             playerMoves.push(gameBoard.indexOf(element));
         }
-    })
+    });
 
     return playerMoves;
 }
@@ -171,7 +171,7 @@ export function doesPlayerWin(board, player) {
         ) {
             playerWins = true;
         }
-    })
+    });
 
     return playerWins;
 }
@@ -190,7 +190,6 @@ export function pushNewRoundToLocalStorage() {
     const roundsData = getFromLocalStorage('roundsData');
 
     roundsData.push(roundObject);
-    console.log(roundsData);
     setInLocalStorage('roundsData', roundsData);
 
 }
@@ -222,3 +221,4 @@ export function getUserInfo() {
     userInfo.difficulty = roundData [roundData.length - 1].difficulty;
 
     return userInfo;
+}
