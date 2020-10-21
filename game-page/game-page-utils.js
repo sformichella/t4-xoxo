@@ -302,15 +302,14 @@ export function executeFullTurn(e) {
     //setting the clicked div 
     let cell = e.target;
 
+    //Avoiding error when clicking on edge of cell.
     while (cell.tagName !== 'DIV') {
         cell = cell.parentElement;
+        if (cell === null) {
+            return;
+        }
     }
 
-    if (cell === null) {
-        return;
-    }
-
-    console.log(cell);
 
     //if there is an image on the div or the game has an outcome exit click handler
     if (cell.childNodes.length || roundsData[roundsData.length - 1].outcome > -2) {
