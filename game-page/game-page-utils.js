@@ -90,7 +90,7 @@ export function makeFreshBoard() {
     };
 
     const boardArray = [];
-    for (let i = 0; i < 9; i++){
+    for (let i = 0; i < 9; i++) {
         boardArray.push(boardSquare);
     }
     return boardArray;
@@ -222,7 +222,7 @@ export function setOutcomeInteger(winStatus) {
 
 }
 
-export function currentBoardPieceColor(){
+export function currentBoardPieceColor() {
     const roundData = getFromLocalStorage('roundsData');
     return roundData[roundData.length - 1].color;
 }
@@ -268,7 +268,7 @@ export function populateBoardElement(element, boardArray) {
             cellImage.setAttribute('src', '../assets/SingleO.svg');
             cell.appendChild(cellImage);
             //cell.innerHTML = gameColorPieceX('#FF0000');
-        } 
+        }
         // Else if the player name is truthy, i.e the player, add
         // an X image to the cell div
         else if (boardArray[location].player) {
@@ -294,7 +294,7 @@ export function getTurnNumber(boardArray) {
     return numberOfTurns;
 }
 
-export function executeFullTurn(e){
+export function executeFullTurn(e) {
     //getting currentboard from local storage
     const roundsData = getFromLocalStorage('roundsData');
     const currentBoard = roundsData[roundsData.length - 1].board;
@@ -378,17 +378,17 @@ export function resetGameBoardDOM() {
     }
 }
 
-export function renderScoreBoard(){
+export function renderScoreBoard() {
     const totalWins = document.getElementById('total-wins');
     const totalLosses = document.getElementById('total-losses');
     const totalCats = document.getElementById('total-cats');
 
-    totalWins.textContent = localStorage.getItem('Wins');
-    totalLosses.textContent = localStorage.getItem('Losses');
-    totalCats.textContent = localStorage.getItem('Cats');
+    totalWins.textContent = localStorage.getItem('Wins') || 0;
+    totalLosses.textContent = localStorage.getItem('Losses') || 0;
+    totalCats.textContent = localStorage.getItem('Cats') || 0;
 }
 
-export function renderUserInfo(){
+export function renderUserInfo() {
     const userInfo = getUserInfo();
 
     const userName = document.getElementById('user-name');
