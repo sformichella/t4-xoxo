@@ -365,6 +365,7 @@ export function executeFullTurn(e) {
         );
 
     }
+
     //check if win status has been reached after player and/or computer moves
     if (winStatus) {
         //places results in squares on page
