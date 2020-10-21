@@ -11,7 +11,6 @@ main {
 h1 {
     color: white;
     text-align: center;
-    text-decoration: underline;
 }
 
 h2{
@@ -52,4 +51,8 @@ img {
     background-color: rgba(16, 18, 26, 0.623);
     margin-top: 50px;
     border: 3px solid black;
+}
+
+#about-header{
+    text-decoration: underline;
 }
