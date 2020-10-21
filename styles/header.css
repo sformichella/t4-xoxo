@@ -5,8 +5,9 @@ header {
     height: var(--header-height);
     box-shadow: var(--shadow);
     position: relative;
-    border-bottom: 1px solid black;
+    border-bottom: 2px solid black;
     background: linear-gradient(90deg, rgba(55,61,94,1) 0%, rgba(45,65,70,1) 100%);
+    box-shadow: 0px 50px 30px -12px rgba(0,0,0,0.45);
 }
 
 .header-label{
