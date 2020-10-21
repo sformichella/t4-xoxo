@@ -424,7 +424,10 @@ export function renderScoreBoard() {
     totalLosses.textContent = localStorage.getItem('Losses') || 0;
     totalCats.textContent = localStorage.getItem('Cats') || 0;
 
-    if (totalWins.textContent !== '0' || totalLosses.textContent !== '0' || totalCats.textContent !== '0') {
+    const showButtonCheck = getFromLocalStorage('roundsData');    
+    if (showButtonCheck[showButtonCheck.length - 1].outcome === -2) {
+        newGameButton.classList.add('hidden');
+    } else {
         newGameButton.classList.remove('hidden');
     }
 }
