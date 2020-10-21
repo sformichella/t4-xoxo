@@ -15,9 +15,13 @@
     </header>
     <main>
         <div id="main-content" class="graph">
-            <h2>History of Game Results</h2>
+            <h2 class="titles">History of Game Results</h2>
             <canvas id="myChart" width="600" height="600"></canvas>
-            <div id="no-data"></div>
+            <div class="error-message" id="no-data"></div>
+        </div>
+        <div id="next-content" class="graph">
+            <h2 class="titles">Histogram: # of Turns/Game</h2>
+            <canvas id="histogram" width="600" height="600"><s/canvas>
         </div>
     </main>
     <script type="module" src="./results.js"></script>
