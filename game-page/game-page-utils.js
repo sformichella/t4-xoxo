@@ -361,6 +361,20 @@ export function executeFullTurn(e) {
             winStatus = checkWin(currentBoard);
             document.getElementById('board-form').style.pointerEvents = 'auto';
 
+            if (winStatus) {
+                //places results in squares on page
+                renderGameResult(winStatus);
+                //increment localstorage to -1, 0, or 1
+                setOutcomeInteger(winStatus);
+        
+                // Hide play again button
+                const newGameButton = document.getElementsByTagName('button')[0];
+                newGameButton.classList.remove('hidden');
+    
+                return;
+            }
+
+
         }, Math.random() * 2000
         );
 
