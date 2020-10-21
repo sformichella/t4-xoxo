@@ -21,6 +21,8 @@ canvas {
 }
 
 #main-content {
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    margin-top: 50px;
+    border-radius: 20px;
+    min-width: 600px;
+    max-height: 150px;
 }
