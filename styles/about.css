@@ -23,8 +23,16 @@ img {
     height: 100px;
 }
 
-#bio-pic {
-    text-align: center;
+#bio-pic img:last-child{
+    display: none;  
+}
+
+#bio-pic:hover img:last-child{
+    display: block;
+}
+
+#bio-pic:hover img:first-child{
+    display: none;
 }
 
 .spread {
@@ -32,6 +40,10 @@ img {
 }
 
 .bio-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 200px;
     background-color: rgba(49, 151, 100, 0.719);
     border: black 1px solid;
