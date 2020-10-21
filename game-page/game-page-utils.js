@@ -482,6 +482,10 @@ export function getComputerMove() {
                 }
             }
         }
+
+        if (convertStringToNum(currentBoard[4].player) === 0){
+            return 4;
+        }
     }
 
     for (let i = 0; i < currentBoard.length; i++) {
