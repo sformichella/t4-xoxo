@@ -24,6 +24,10 @@ html, body {
     align-items: center;
 }
 
+.hidden {
+    display: none;
+}
+
 
 
 

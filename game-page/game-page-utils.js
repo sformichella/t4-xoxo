@@ -363,6 +363,10 @@ export function executeFullTurn(e) {
         renderGameResult(winStatus);
         //increment localstorage to -1, 0, or 1
         setOutcomeInteger(winStatus);
+
+        // Hide play again button
+        const newGameButton = document.getElementsByTagName('button')[0];
+        newGameButton.classList.remove('hidden');
     }
 }
 

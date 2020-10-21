@@ -17,7 +17,7 @@ renderScoreBoard();
 populateBoardElement(boardForm, mostRecentBoard);
 
 boardForm.addEventListener('click', (e) => {
-    executeFullTurn(e);    
+    executeFullTurn(e);
 });
 
 newGameButton.addEventListener('click', () => {
@@ -28,6 +28,9 @@ newGameButton.addEventListener('click', () => {
     userName.textContent = `User: ${userInfo.name}`;
     const difficultyElem = document.getElementById('difficulty');
     difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
+
+    // Unhide Button
+    newGameButton.classList.add('hidden')
 });
 
 resetSeriesButton.addEventListener('click', () => {
