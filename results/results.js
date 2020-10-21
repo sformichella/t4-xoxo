@@ -43,7 +43,7 @@ var myChart = new Chart(ctx, {         //eslint-disable-line
 });
 
 //Building data structures for histogram of turns/game
-const movesPerGame = ['0-Turn', '1-Turn', '2-Turn', '3-Turn', '4-Turn', '5-Turn', '6-Turn', '7-Turn', '8-Turn', '9-Turn'];
+const movesPerGame = ['5-Turn', '6-Turn', '7-Turn', '8-Turn', '9-Turn'];
 let moveCounter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 const mostRecentRound = getFromLocalStorage('roundsData');
 
@@ -58,6 +58,7 @@ mostRecentRound.forEach(round => {
     moveCounter[movesPerSingleGame] += 1;
 });
 
+const completedGamesOnly = moveCounter.slice(5, 10);
 
 //if statement to increment index based on
 let histogram = document.getElementById('histogram').getContext('2d');
@@ -67,30 +68,20 @@ var myChartHistogram = new Chart(histogram, {         //eslint-disable-line
         labels: movesPerGame,
         datasets: [{
             label: 'Count of Games',
-            data: moveCounter,
+            data: completedGamesOnly,
             backgroundColor: [
                 'rgba(255, 255, 0, 0.5)',
                 'rgba(255, 0, 0, 0.5)',
                 'rgba(0, 255, 255, 0.5)',
-                'rgba(255, 255, 0, 0.5)',
-                'rgba(255, 0, 0, 0.5)',
-                'rgba(0, 255, 255, 0.5)',
-                'rgba(255, 255, 0, 0.5)',
-                'rgba(255, 0, 0, 0.5)',
-                'rgba(0, 255, 255, 0.5)',
-                'rgba(255, 255, 0, 0.5)'
+                'rgba(0, 255, 0, 0.5)',
+                'rgba(157, 0, 255, 0.5)'
             ],
             borderColor: [
                 'rgba(255, 255, 0, 1)',
                 'rgba(255, 0, 0, 1)',
                 'rgba(0, 255, 255, 1)',
-                'rgba(255, 255, 0, 1)',
-                'rgba(255, 0, 0, 1)',
-                'rgba(0, 255, 255, 1)',
-                'rgba(255, 255, 0, 1)',
-                'rgba(255, 0, 0, 1)',
-                'rgba(0, 255, 255, 1)',
-                'rgba(255, 255, 0, 1)'
+                'rgba(0, 255, 0, 1)',
+                'rgba(157, 0, 255, 1)'
             ],
             borderWidth: 5
         }]
