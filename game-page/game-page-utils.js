@@ -29,27 +29,27 @@ export function renderGameResult(gameResult) {
     }
 }
 
-export function getComputerMove() {
+// export function getComputerMove() {
 
-    const taken = [];
+//     const taken = [];
 
-    const roundsData = getFromLocalStorage('roundsData');
-    const currentBoard = roundsData[roundsData.length - 1].board;
+//     const roundsData = getFromLocalStorage('roundsData');
+//     const currentBoard = roundsData[roundsData.length - 1].board;
 
-    for (let i = 0; i < currentBoard.length; i++) {
-        if (currentBoard[i].turn !== -1) {
-            taken.push(i);
-        }
-    }
+//     for (let i = 0; i < currentBoard.length; i++) {
+//         if (currentBoard[i].turn !== -1) {
+//             taken.push(i);
+//         }
+//     }
 
-    let rand = Math.floor(Math.random() * 9);
+//     let rand = Math.floor(Math.random() * 9);
 
-    while (taken.includes(rand)) {
-        rand = Math.floor(Math.random() * 9);
-    }
+//     while (taken.includes(rand)) {
+//         rand = Math.floor(Math.random() * 9);
+//     }
 
-    return rand;
-}
+//     return rand;
+// }
 
 export function cellLocation(string) {
 
@@ -405,4 +405,76 @@ export function renderUserInfo() {
 
     const difficultyElem = document.getElementById('difficulty');
     difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
+}
+
+export function getComputerMove() {
+
+    const taken = [];
+
+    const roundsData = getFromLocalStorage('roundsData');
+    const currentBoard = roundsData[roundsData.length - 1].board;
+
+    if (roundsData[roundsData.length - 1].difficulty === 'competitive'){
+
+        const winConditions = [
+            [0, 1, 2],
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6],
+            [1, 4, 7],
+            [2, 5, 8],
+            [2, 4, 6],
+            [0, 4, 8]
+        ];
+
+        for (let i = 0; i < winConditions.length; i++) {
+            if ((convertStringToNum(currentBoard[winConditions[i][0]].player) + convertStringToNum(currentBoard[winConditions[i][1]].player) + convertStringToNum(currentBoard[winConditions[i][2]].player)) === -20){
+                if (convertStringToNum(currentBoard[winConditions[i][0]].player) === 0){
+                    return winConditions[i][0];
+                } else if (convertStringToNum(currentBoard[winConditions[i][1]].player) === 0){
+                    return winConditions[i][1];
+                } else if (convertStringToNum(currentBoard[winConditions[i][2]].player) === 0){
+                    return winConditions[i][2];
+                }
+            }
+        }
+    
+        for (let i = 0; i < winConditions.length; i++) {
+            if ((convertStringToNum(currentBoard[winConditions[i][0]].player) + convertStringToNum(currentBoard[winConditions[i][1]].player) + convertStringToNum(currentBoard[winConditions[i][2]].player)) === 2){
+                if (convertStringToNum(currentBoard[winConditions[i][0]].player) === 0){
+                    return winConditions[i][0];
+                } else if (convertStringToNum(currentBoard[winConditions[i][1]].player) === 0){
+                    return winConditions[i][1];
+                } else if (convertStringToNum(currentBoard[winConditions[i][2]].player) === 0){
+                    return winConditions[i][2];
+                }
+            }
+        }
+    }
+    
+    for (let i = 0; i < currentBoard.length; i++) {
+        if (currentBoard[i].turn !== -1) {
+            taken.push(i);
+        }
+    }
+
+    let rand = Math.floor(Math.random() * 9);
+
+    while (taken.includes(rand)) {
+        rand = Math.floor(Math.random() * 9);
+    }
+
+    return rand;
+}
+
+export function convertStringToNum(string){
+
+    if (string === 'player'){
+        return 1;
+    } else if (string === 'computer') {
+        return -10;
+    } else {
+        return 0;
+    }
+
 }

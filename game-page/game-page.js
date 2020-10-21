@@ -30,7 +30,7 @@ newGameButton.addEventListener('click', () => {
     difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 
     // Unhide Button
-    newGameButton.classList.add('hidden')
+    newGameButton.classList.add('hidden');
 });
 
 resetSeriesButton.addEventListener('click', () => {
