@@ -300,10 +300,20 @@ export function executeFullTurn(e) {
     const currentBoard = roundsData[roundsData.length - 1].board;
 
     //setting the clicked div 
-    const cell = e.target;
+    let cell = e.target;
+
+    while (cell.tagName !== 'DIV') {
+        cell = cell.parentElement;
+    }
+
+    if (cell === null) {
+        return;
+    }
+
+    console.log(cell);
 
     //if there is an image on the div or the game has an outcome exit click handler
-    if (cell.src || roundsData[roundsData.length - 1].outcome > -2) {
+    if (cell.childNodes.length || roundsData[roundsData.length - 1].outcome > -2) {
         return;
     }
 

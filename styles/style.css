@@ -28,6 +28,10 @@ html, body {
     visibility: hidden;
 }
 
+.disable-pointer-events {
+    pointer-events: none;
+}
+
 
 
 
