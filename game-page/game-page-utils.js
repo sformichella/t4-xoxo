@@ -383,6 +383,7 @@ export function resetGameBoardDOM() {
 }
 
 export function renderScoreBoard() {
+    const newGameButton = document.getElementsByTagName('button')[0];
     const totalWins = document.getElementById('total-wins');
     const totalLosses = document.getElementById('total-losses');
     const totalCats = document.getElementById('total-cats');
@@ -390,6 +391,10 @@ export function renderScoreBoard() {
     totalWins.textContent = localStorage.getItem('Wins') || 0;
     totalLosses.textContent = localStorage.getItem('Losses') || 0;
     totalCats.textContent = localStorage.getItem('Cats') || 0;
+
+    if (totalWins.textContent !== '0' || totalLosses.textContent !== '0' || totalCats.textContent !== '0') {
+        newGameButton.classList.remove('hidden');
+    }
 }
 
 export function renderUserInfo() {
