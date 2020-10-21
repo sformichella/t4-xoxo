@@ -1,4 +1,8 @@
 
+* {
+    font-family: 'Noto Serif', serif;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -6,13 +10,15 @@ main {
     background-image: url('../assets/football_xs_os.jpg');
     background-size: cover;
     height: 100%; 
+    width: 100%;
+    min-width: 400px;
 }
 
 h1 {
     color: white;
     text-align: center;
+    color: black;
 }
-
 h2{
     align-items: center;
     justify-items: center;
@@ -21,18 +27,6 @@ h2{
 img {
     width: 100px;
     height: 100px;
-}
-
-#bio-pic img:last-child{
-    display: none;  
-}
-
-#bio-pic:hover img:last-child{
-    display: block;
-}
-
-#bio-pic:hover img:first-child{
-    display: none;
 }
 
 .spread {
@@ -44,27 +38,38 @@ img {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    background-color: rgba(49, 151, 100, 0.719);
+    width: 220px;
+    background-color: rgba(30, 156, 93, 0.719);
     border: black 1px solid;
     border-radius: 5px;
     margin: 10px;
     padding: 5px;
 }
 
-#play-div, #results-div{
-
-    display: none;
-    display: none;
-
+#bio-pic img:last-child {
+    display: none;  
 }
 
-#page-content{
-    background-color: rgba(16, 18, 26, 0.623);
+#bio-pic:hover img:last-child {
+    display: block;
+}
+
+#bio-pic:hover img:first-child {
+    display: none;
+}
+
+#play-div, #results-div {
+    display: none;
+    display: none;
+}
+
+#page-content {
+    background-color: rgba(73, 117, 175, 0.87);
     margin-top: 50px;
-    border: 3px solid black;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
-#about-header{
+#about-header {
     text-decoration: underline;
 }
