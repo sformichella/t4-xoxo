@@ -483,7 +483,7 @@ export function getComputerMove() {
             }
         }
         const rnd = Math.random();
-        if (convertStringToNum(currentBoard[4].player) === 0 && rnd > .55){
+        if (convertStringToNum(currentBoard[4].player) === 0 && rnd > .4){
             return 4;
         }
     }
