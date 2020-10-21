@@ -36,26 +36,33 @@ img {
 .bio-card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
     width: 220px;
     background-color: rgba(30, 156, 93, 0.719);
     border: black 1px solid;
     border-radius: 5px;
     margin: 10px;
+    height: 350px;
     padding: 5px;
 }
 
 #bio-pic img:last-child {
     display: none;  
+    height: 100px;
+    width: 100px;
 }
 
 #bio-pic:hover img:last-child {
     display: block;
+    height: 100px;
+    width: 100px;
 }
 
 #bio-pic:hover img:first-child {
     display: none;
+    height: 100px;
+    width: 100px;
 }
 
 #play-div, #results-div {
@@ -68,6 +75,7 @@ img {
     margin-top: 50px;
     border: 1px solid black;
     border-radius: 5px;
+    padding: 10px;
 }
 
 #about-header {
