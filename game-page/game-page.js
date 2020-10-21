@@ -20,6 +20,7 @@ boardForm.addEventListener('mouseup', (e) => {
     executeFullTurn(e);
 });
 
+
 newGameButton.addEventListener('click', () => {
     pushNewRoundToLocalStorage();
     resetGameBoardDOM();

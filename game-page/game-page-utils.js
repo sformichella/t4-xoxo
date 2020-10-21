@@ -332,29 +332,37 @@ export function executeFullTurn(e) {
 
     //if there is no winning combination let the computer go
     if (winStatus === null) {
-        // return computer index next move
-        const computersMove = getComputerMove();
-        const computerCell = document.getElementById(cellName(computersMove));
 
-        //drop O image from computer move slot
-        const compImage = document.createElement('img');
-        compImage.setAttribute('src', '../assets/SingleO.svg');
-        computerCell.appendChild(compImage);
+        document.getElementById('board-form').style.pointerEvents = 'none';
+
+        setTimeout(() => {
+            // return computer index next move
+            const computersMove = getComputerMove();
+            const computerCell = document.getElementById(cellName(computersMove));
+
+            //drop O image from computer move slot
+            const compImage = document.createElement('img');
+            compImage.setAttribute('src', '../assets/SingleO.svg');
+            computerCell.appendChild(compImage);
 
 
-        //assign computer to that board cell
-        currentBoard[computersMove].player = 'computer';
+            //assign computer to that board cell
+            currentBoard[computersMove].player = 'computer';
 
-        //increases number of turns
-        numberOfTurns = getTurnNumber(currentBoard) + 1;
-        currentBoard[computersMove].turn = numberOfTurns;
+            //increases number of turns
+            numberOfTurns = getTurnNumber(currentBoard) + 1;
+            currentBoard[computersMove].turn = numberOfTurns;
 
-        //sets roundsData in localstorage
-        roundsData[roundsData.length - 1].board = currentBoard;
-        setInLocalStorage('roundsData', roundsData);
+            //sets roundsData in localstorage
+            roundsData[roundsData.length - 1].board = currentBoard;
+            setInLocalStorage('roundsData', roundsData);
 
-        //checks for win status after computer has made move
-        winStatus = checkWin(currentBoard);
+            //checks for win status after computer has made move
+            winStatus = checkWin(currentBoard);
+            document.getElementById('board-form').style.pointerEvents = 'auto';
+
+        }, Math.random() * 2000
+        );
 
     }
     //check if win status has been reached after player and/or computer moves
@@ -414,7 +422,7 @@ export function getComputerMove() {
     const roundsData = getFromLocalStorage('roundsData');
     const currentBoard = roundsData[roundsData.length - 1].board;
 
-    if (roundsData[roundsData.length - 1].difficulty === 'competitive'){
+    if (roundsData[roundsData.length - 1].difficulty === 'competitive') {
 
         const winConditions = [
             [0, 1, 2],
@@ -428,30 +436,30 @@ export function getComputerMove() {
         ];
 
         for (let i = 0; i < winConditions.length; i++) {
-            if ((convertStringToNum(currentBoard[winConditions[i][0]].player) + convertStringToNum(currentBoard[winConditions[i][1]].player) + convertStringToNum(currentBoard[winConditions[i][2]].player)) === -20){
-                if (convertStringToNum(currentBoard[winConditions[i][0]].player) === 0){
+            if ((convertStringToNum(currentBoard[winConditions[i][0]].player) + convertStringToNum(currentBoard[winConditions[i][1]].player) + convertStringToNum(currentBoard[winConditions[i][2]].player)) === -20) {
+                if (convertStringToNum(currentBoard[winConditions[i][0]].player) === 0) {
                     return winConditions[i][0];
-                } else if (convertStringToNum(currentBoard[winConditions[i][1]].player) === 0){
+                } else if (convertStringToNum(currentBoard[winConditions[i][1]].player) === 0) {
                     return winConditions[i][1];
-                } else if (convertStringToNum(currentBoard[winConditions[i][2]].player) === 0){
+                } else if (convertStringToNum(currentBoard[winConditions[i][2]].player) === 0) {
                     return winConditions[i][2];
                 }
             }
         }
-    
+
         for (let i = 0; i < winConditions.length; i++) {
-            if ((convertStringToNum(currentBoard[winConditions[i][0]].player) + convertStringToNum(currentBoard[winConditions[i][1]].player) + convertStringToNum(currentBoard[winConditions[i][2]].player)) === 2){
-                if (convertStringToNum(currentBoard[winConditions[i][0]].player) === 0){
+            if ((convertStringToNum(currentBoard[winConditions[i][0]].player) + convertStringToNum(currentBoard[winConditions[i][1]].player) + convertStringToNum(currentBoard[winConditions[i][2]].player)) === 2) {
+                if (convertStringToNum(currentBoard[winConditions[i][0]].player) === 0) {
                     return winConditions[i][0];
-                } else if (convertStringToNum(currentBoard[winConditions[i][1]].player) === 0){
+                } else if (convertStringToNum(currentBoard[winConditions[i][1]].player) === 0) {
                     return winConditions[i][1];
-                } else if (convertStringToNum(currentBoard[winConditions[i][2]].player) === 0){
+                } else if (convertStringToNum(currentBoard[winConditions[i][2]].player) === 0) {
                     return winConditions[i][2];
                 }
             }
         }
     }
-    
+
     for (let i = 0; i < currentBoard.length; i++) {
         if (currentBoard[i].turn !== -1) {
             taken.push(i);
@@ -467,9 +475,9 @@ export function getComputerMove() {
     return rand;
 }
 
-export function convertStringToNum(string){
+export function convertStringToNum(string) {
 
-    if (string === 'player'){
+    if (string === 'player') {
         return 1;
     } else if (string === 'computer') {
         return -10;
