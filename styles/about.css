@@ -34,7 +34,7 @@ img {
 
 .bio-card {
     width: 200px;
-    background-color: white;
+    background-color: rgba(49, 151, 100, 0.719);
     border: black 1px solid;
     border-radius: 5px;
     margin: 10px;
@@ -49,8 +49,7 @@ img {
 }
 
 #page-content{
-    background-color: grey;
+    background-color: rgba(16, 18, 26, 0.623);
     margin-top: 50px;
     border: 3px solid black;
-    
 }
