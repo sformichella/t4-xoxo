@@ -7,8 +7,14 @@ main {
 
 section {
     width: 400px;
-    min-height: 420px;
+    min-height: 450px;
     margin: 50px;
+    align-self: flex-start;
+    height: auto;
+    background-color: white;
+    border: solid black 5px;
+    padding: 25px;
+    font-family: 'Noto Serif', serif;
 }
 
 input[type="text"] {
@@ -16,22 +22,18 @@ input[type="text"] {
 }
 
 hr {
-    width: 80%;
+    width: 100%;
 }
 
 form > button {
     width: 75px;
     border-radius: 10%;
     align-self: center;
+    margin-top: 10px;
 }
 
-section {
-    align-self: flex-start;
-    height: auto;
-    background-color: white;
-    border: solid black 5px;
-    padding: 25px;
-    font-family: 'Noto Serif', serif;
+form > span{
+    margin-bottom: 10px;
 }
 
 li {
@@ -53,4 +55,12 @@ hr {
 #play-div, #results-div{
     display: none;
     display: none;
+}
+
+#color-dropdown{
+    width: 75px;
+}
+
+#box-one{
+    width: 250px;
 }

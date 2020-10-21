@@ -23,7 +23,7 @@
 
     <main>
         <div class="flex-row flex-centered">
-            <section>
+            <section id='box-one'>
                 <form id ="user-form" class="flex-column">
                     <span>Enter User Name</span>
                     <input type="text" name="name" placeholder="Serena van der Woodsen" required>
@@ -35,22 +35,26 @@
                         <input type="radio" name="piece" value="X" checked>
                         X's
                     </label>
-                    <label class="hidden">
+                    <!-- <label class="hidden">
                         <input type="radio" name="piece" value="O">
                         O's
-                    </label>
+                    </label> -->
 
                     <hr>
 
                     <span>Choose Piece Color</span>
-                    <label>
-                        <input type="radio" name="color" value="#FF0000" checked>
-                        Red
-                    </label>
-                    <label>
-                        <input type="radio" name="color" value="#0000FF">
-                        Blue
-                    </label>
+
+                    <select id="color-dropdown" name="color">
+                        <option value="red">Red</option>
+                        <option value="orange">Orange</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                        <option value="purple">Purple</option>
+                        <option value="pink">Pink</option>
+                        <option value="black">Black</option>
+                        <option value="brown">Brown</option>
+                      </select>
 
                     <hr>
 
