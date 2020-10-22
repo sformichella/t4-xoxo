@@ -29,27 +29,6 @@ export function renderGameResult(gameResult) {
     }
 }
 
-// export function getComputerMove() {
-
-//     const taken = [];
-
-//     const roundsData = getFromLocalStorage('roundsData');
-//     const currentBoard = roundsData[roundsData.length - 1].board;
-
-//     for (let i = 0; i < currentBoard.length; i++) {
-//         if (currentBoard[i].turn !== -1) {
-//             taken.push(i);
-//         }
-//     }
-
-//     let rand = Math.floor(Math.random() * 9);
-
-//     while (taken.includes(rand)) {
-//         rand = Math.floor(Math.random() * 9);
-//     }
-
-//     return rand;
-// }
 
 export function cellLocation(string) {
 
@@ -176,7 +155,6 @@ export function doesPlayerWin(board, player) {
             })
         ) {
             winningLine(win);
-            console.log(win);
             playerWins = true;
         }
     });
@@ -200,10 +178,8 @@ export function pushNewRoundToLocalStorage() {
     };
 
 
-
     roundsData.push(roundObject);
     setInLocalStorage('roundsData', roundsData);
-
 }
 
 export function setOutcomeInteger(winStatus) {
@@ -221,7 +197,6 @@ export function setOutcomeInteger(winStatus) {
 
     roundsArray[roundsArray.length - 1] = currentRound;
     setInLocalStorage('roundsData', roundsArray);
-
 }
 
 export function currentBoardPieceColor() {
@@ -246,7 +221,6 @@ export function populateBoardElement(element, boardArray) {
     // to each cell depending on the player property of
     // each object in the boardArray
 
-
     // Make array of cells inside of the form element
     const boardNodeList = element.childNodes;
     const cells = [];
@@ -256,7 +230,6 @@ export function populateBoardElement(element, boardArray) {
             cells.push(item);
         }
     }
-
 
     // Loop through each cell and add an image if necessary
     cells.forEach(cell => {
@@ -269,14 +242,10 @@ export function populateBoardElement(element, boardArray) {
             const cellImage = document.createElement('img');
             cellImage.setAttribute('src', '../assets/SingleO.svg');
             cell.appendChild(cellImage);
-            //cell.innerHTML = gameColorPieceX('#FF0000');
         }
         // Else if the player name is truthy, i.e the player, add
         // an X image to the cell div
         else if (boardArray[location].player) {
-            //const cellImage = document.createElement('img');
-            //cellImage.setAttribute('src', '../assets/SingleX.svg');
-
             cell.innerHTML = gameColorPieceX(currentBoardPieceColor());
         }
     });
@@ -292,13 +261,10 @@ export function getTurnNumber(boardArray) {
             }
         }
     );
-
     return numberOfTurns;
 }
 
 export function executeFullTurn(e) {
-
-
     // intialize click 
 
     //getting currentboard from local storage
@@ -315,23 +281,18 @@ export function executeFullTurn(e) {
         }
     }
 
-
     //if there is an image on the div or the game has an outcome exit click handler
     if (cell.childNodes.length || roundsData[roundsData.length - 1].outcome > -2) {
         return;
     }
 
     if (!(roundsData.length % 2 === 0) || !(getTurnNumber(currentBoard) === -1)) {
-
         // Player turn
         executePlayerTurn(cell, currentBoard, roundsData);
-
     }
 
     // after player turn check win condition
     let winStatus = checkWin(currentBoard);
-
-
 
     //if there is no winning combination let the computer go
     if (winStatus === null) {
@@ -391,7 +352,9 @@ export function resetGameBoardDOM() {
         }
     }
     const removeLineDOM = document.getElementById('win-line');
-    removeLineDOM.remove();
+    if (removeLineDOM) {
+        removeLineDOM.remove();
+    }
 }
 
 export function renderScoreBoard() {
@@ -429,7 +392,7 @@ export function getComputerMove() {
     const roundsData = getFromLocalStorage('roundsData');
     const currentBoard = roundsData[roundsData.length - 1].board;
 
-    if (roundsData[roundsData.length - 1].difficulty === 'competitive') {
+    if (roundsData[roundsData.length - 1].difficulty === 'Competitive') {
 
         const winConditions = [
             [0, 1, 2],
@@ -547,7 +510,6 @@ export function executeComputerMove(currentBoard, roundsData) {
 }
 
 function winningLine(winningArray) {
-    console.log('this is the winning array' + winningArray);
     const winConditions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -559,40 +521,7 @@ function winningLine(winningArray) {
         [0, 4, 8]
     ];
 
-    const lineFileNames = [
-        {
-            filename: '../assets/HorizontalLine.svg',
-            className: 'hor-top'
-        },
-        {
-            filename: '../assets/HorizontalLine.svg',
-            className: 'hor-mid'
-        },
-        {
-            filename: '../assets/HorizontalLine.svg',
-            className: 'hor-bottom'
-        },
-        {
-            filename: '../assets/HorizontalLine.svg',
-            className: 'vert-left'
-        },
-        {
-            filename: '../assets/HorizontalLine.svg',
-            className: 'vert-mid'
-        },
-        {
-            filename: '../assets/HorizontalLine.svg',
-            className: 'vert-right'
-        },
-        {
-            filename: '../assets/HorizontalLine.svg',
-            className: 'forwards-diag'
-        },
-        {
-            filename: '../assets/HorizontalLine.svg',
-            className: 'backwards-diag'
-        }
-    ];
+    const lineFileNames = ['hor-top', 'hor-mid', 'hor-bottom', 'vert-left', 'vert-mid', 'vert-right', 'forwards-diag', 'backwards-diag'];
 
     const stringWinningArray = JSON.stringify(winningArray);
     let whereIsWin;
@@ -605,18 +534,13 @@ function winningLine(winningArray) {
     }
 
     const winningObject = lineFileNames[whereIsWin];
-
-
-
-
-
     const gameBoard = document.getElementById('board-form');
     const winLine = document.createElement('div');
-    winLine.setAttribute('class', winningObject.className);
+    winLine.setAttribute('class', winningObject);
     winLine.setAttribute('id', 'win-line');
     const image = document.createElement('img');
-    image.src = winningObject.filename;
+    image.src = '../assets/HorizontalLine.svg';
 
     winLine.appendChild(image);
     gameBoard.appendChild(winLine);
-}
+}	
