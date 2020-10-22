@@ -23,6 +23,9 @@ boardForm.addEventListener('mouseup', (e) => {
 
 
 newGameButton.addEventListener('click', () => {
+    const winMSG = document.getElementById('win-msg');
+    winMSG.classList.add('hidden');
+
     pushNewRoundToLocalStorage();
     resetGameBoardDOM();
     const userInfo = getUserInfo();
