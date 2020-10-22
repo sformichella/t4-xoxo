@@ -149,17 +149,15 @@ export function doesPlayerWin(board, player) {
     let playerWins = false;
 
     winConditions.forEach(win => {
-        if (
-            win.every(el => {
-                return moves.indexOf(el) !== -1;
-            })
-        ) {
+        if (win.every(el => {return moves.indexOf(el) !== -1;})) {
             winningLine(win);
             playerWins = true;
+            return playerWins;
         }
     });
 
     return playerWins;
+    
 }
 
 export function pushNewRoundToLocalStorage() {
@@ -351,10 +349,14 @@ export function resetGameBoardDOM() {
             locationDOM.removeChild(locationDOM.firstChild);
         }
     }
-    const removeLineDOM = document.getElementById('win-line');
-    if (removeLineDOM) {
-        removeLineDOM.remove();
+    const removeLineDOM = document.querySelectorAll('.win-line');
+    if (removeLineDOM[0]) {
+        removeLineDOM[0].remove();
     }
+    if (removeLineDOM[1]) {
+        removeLineDOM[1].remove();
+    }
+
 }
 
 export function renderScoreBoard() {
@@ -532,12 +534,12 @@ function winningLine(winningArray) {
             whereIsWin = i;
         }
     }
-      
+
     const winningObject = lineFileNames[whereIsWin];
     const gameBoard = document.getElementById('board-form');
     const winLine = document.createElement('div');
     winLine.setAttribute('class', winningObject);
-    winLine.setAttribute('id', 'win-line');
+    winLine.classList.add('win-line');
     const image = document.createElement('img');
     image.src = '../assets/HorizontalLine.svg';
     
