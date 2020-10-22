@@ -344,6 +344,15 @@ export function executeFullTurn(e) {
 
         document.getElementById('board-form').style.pointerEvents = 'none';
 
+        const headerLinks = document.querySelectorAll('.header-links');
+
+        headerLinks.forEach(
+            link => {
+                link.classList.toggle('disable-pointer-events');
+            }
+        );
+
+
         setTimeout(() => {
             // return computer index next move
             const computersMove = getComputerMove();
@@ -370,16 +379,23 @@ export function executeFullTurn(e) {
             winStatus = checkWin(currentBoard);
             document.getElementById('board-form').style.pointerEvents = 'auto';
 
+            headerLinks.forEach(
+                link => {
+                    link.classList.toggle('disable-pointer-events');
+                }
+            );
+
+
             if (winStatus) {
                 //places results in squares on page
                 renderGameResult(winStatus);
                 //increment localstorage to -1, 0, or 1
                 setOutcomeInteger(winStatus);
-        
+
                 // Hide play again button
                 const newGameButton = document.getElementsByTagName('button')[0];
                 newGameButton.classList.remove('hidden');
-    
+
                 return;
             }
 
@@ -424,7 +440,7 @@ export function renderScoreBoard() {
     totalLosses.textContent = localStorage.getItem('Losses') || 0;
     totalCats.textContent = localStorage.getItem('Cats') || 0;
 
-    const showButtonCheck = getFromLocalStorage('roundsData');    
+    const showButtonCheck = getFromLocalStorage('roundsData');
     if (showButtonCheck[showButtonCheck.length - 1].outcome === -2) {
         newGameButton.classList.add('hidden');
     } else {
@@ -486,7 +502,7 @@ export function getComputerMove() {
             }
         }
         const rnd = Math.random();
-        if (convertStringToNum(currentBoard[4].player) === 0 && rnd > .4){
+        if (convertStringToNum(currentBoard[4].player) === 0 && rnd > .4) {
             return 4;
         }
     }
@@ -517,3 +533,9 @@ export function convertStringToNum(string) {
     }
 
 }
+
+// function toggleLinksOnOff(links) {
+//     links.forEach(link =>
+//         link.addClassList('disable-pointer-events'));
+// }
+

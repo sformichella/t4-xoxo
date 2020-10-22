@@ -17,6 +17,7 @@ renderScoreBoard();
 populateBoardElement(boardForm, mostRecentBoard);
 
 boardForm.addEventListener('mouseup', (e) => {
+
     executeFullTurn(e);
 });
 
