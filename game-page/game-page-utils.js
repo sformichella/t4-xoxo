@@ -175,6 +175,8 @@ export function doesPlayerWin(board, player) {
                 return moves.indexOf(el) !== -1;
             })
         ) {
+            winningLine(win);
+            console.log(win);
             playerWins = true;
         }
     });
@@ -388,6 +390,8 @@ export function resetGameBoardDOM() {
             locationDOM.removeChild(locationDOM.firstChild);
         }
     }
+    const removeLineDOM = document.getElementById('win-line');
+    removeLineDOM.remove();
 }
 
 export function renderScoreBoard() {
@@ -541,3 +545,79 @@ export function executeComputerMove(currentBoard, roundsData) {
     setInLocalStorage('roundsData', roundsData);
 
 }
+
+function winningLine(winningArray) {
+    console.log('this is the winning array' + winningArray);
+    const winConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [2, 4, 6],
+        [0, 4, 8]
+    ];
+
+    const lineFileNames = [
+        {
+            filename: '../assets/HorizontalLine.svg',
+            className: 'hor-top' 
+        },
+        {
+            filename: '../assets/HorizontalLine.svg',
+            className: 'hor-mid' 
+        },
+        {
+            filename: '../assets/HorizontalLine.svg',
+            className: 'hor-bottom'   
+        },
+        {
+            filename: '../assets/HorizontalLine.svg',
+            className: 'vert-left'
+        },
+        {
+            filename: '../assets/HorizontalLine.svg',
+            className: 'vert-mid' 
+        },
+        {
+            filename: '../assets/HorizontalLine.svg',
+            className: 'vert-right' 
+        },        
+        {
+            filename: '../assets/HorizontalLine.svg',
+            className: 'forwards-diag'   
+        },
+        {
+            filename: '../assets/HorizontalLine.svg',
+            className: 'backwards-diag' 
+        }  
+    ];
+
+    const stringWinningArray = JSON.stringify(winningArray);
+    let whereIsWin;
+
+    for (let i = 0; i < winConditions.length; i++) {
+        const stringWin = JSON.stringify(winConditions[i]);
+        if (stringWin === stringWinningArray) {
+            whereIsWin = i;
+        }
+    }
+      
+    const winningObject = lineFileNames[whereIsWin];
+
+    
+
+    
+
+    const gameBoard = document.getElementById('board-form');
+    const winLine = document.createElement('div');
+    winLine.setAttribute('class', winningObject.className);
+    winLine.setAttribute('id', 'win-line');
+    const image = document.createElement('img');
+    image.src = winningObject.filename;
+    
+    winLine.appendChild(image);
+    gameBoard.appendChild(winLine);
+}
+	
