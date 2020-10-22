@@ -6,7 +6,7 @@ const boardForm = document.getElementById('board-form');
 const mostRecentRound = getFromLocalStorage('roundsData');
 const mostRecentBoard = mostRecentRound[mostRecentRound.length - 1].board;
 const newGameButton = document.getElementsByTagName('button')[0];
-const resetSeriesButton = document.getElementsByTagName('button')[1];
+
 
 renderHeader();
 
@@ -37,15 +37,12 @@ newGameButton.addEventListener('click', () => {
     const currentBoard = roundsData[roundsData.length - 1].board;
     console.log(roundsData.length % 2);
 
-    if (roundsData.length % 2 === 0){
+    if (roundsData.length % 2 === 0) {
         console.log('test1');
         executeComputerMove(currentBoard, roundsData);
         console.log('test2');
     }
-    
+
 });
 
-resetSeriesButton.addEventListener('click', () => {
-    window.location.replace('../index.html');
-});
 
