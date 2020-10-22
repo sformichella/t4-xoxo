@@ -29,18 +29,15 @@ newGameButton.addEventListener('click', () => {
     const userName = document.getElementById('user-name');
     userName.textContent = `${userInfo.name}`;
     const difficultyElem = document.getElementById('difficulty');
-    difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
+    difficultyElem.textContent = `${userInfo.difficulty} Mode`;
 
     // Unhide Button
     newGameButton.classList.add('hidden');
     const roundsData = getFromLocalStorage('roundsData');
     const currentBoard = roundsData[roundsData.length - 1].board;
-    console.log(roundsData.length % 2);
 
     if (roundsData.length % 2 === 0) {
-        console.log('test1');
         executeComputerMove(currentBoard, roundsData);
-        console.log('test2');
     }
 
 });
