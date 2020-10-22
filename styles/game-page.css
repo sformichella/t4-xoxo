@@ -1,6 +1,6 @@
-*   {
+/* *   {
     font-family: 'Noto', sans-serif;
-}
+} */
 
 body {
     display: flex;
@@ -78,6 +78,14 @@ h2 {
 h3 {
     margin-top: 10px;
 }
+
+.header-h1 {
+    font-size: 60px;
+    font-family: 'Titillium Web', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .game-board {
     display: grid;
     grid-template-columns: 150px 150px 150px;
@@ -105,7 +113,7 @@ h3 {
     margin-left: 20px;
     border-radius: 5px;
     background-color: rgb(58, 199, 180);
-
+    font-family: 'Noto Serif', serif;
     width: 300px;
 }
 

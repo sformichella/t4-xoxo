@@ -6,7 +6,7 @@ export function renderHeader() {
 
 
     var headerString = '<div id=\'header-container\' class=\'flex-row space-between\'>' +
-        '            <h1 class=\'left-margin header-h1\'>T<sup>4</sup> XOXO</h1>' +
+        '            <h1 class=\'left-margin header-h1\'>T<sup>4</sup> xoxo</h1>' +
         '            <div class = \'flex-row\'>' +
         '                <div id = \'icon-group\' class = \'flex-row\'>' +
         '                    <div class = \'flex-column justify-center\'>' +

@@ -18,6 +18,16 @@ canvas {
     border: solid grey 10px;
 }
 
+h2 {
+    font-family: 'Noto Serif', serif;
+    text-align: center;
+    background-color: gray;
+    padding: 30px;
+    margin: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
 .graph {
     background-color: grey;
     text-align: center;
@@ -28,16 +38,15 @@ canvas {
     max-height: 150px;
 }
 
-h2 {
-    text-align: center;
-    background-color: gray;
-    padding: 30px;
-    margin: 0;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+.header-h1 {
+    font-size: 60px;
+    font-family: 'Titillium Web', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #no-data {
+    font-family: 'Noto Serif', serif;
     padding: 65px;
 
 }

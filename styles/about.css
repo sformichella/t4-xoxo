@@ -1,7 +1,5 @@
 
-* {
-    font-family: 'Noto Serif', serif;
-}
+
 
 main {
     display: flex;
@@ -29,11 +27,19 @@ img {
     height: 100px;
 }
 
+.header-h1 {
+    font-size: 60px;
+    font-family: 'Titillium Web', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .spread {
     display: flex;
 }
 
 .bio-card {
+    font-family: 'Noto Serif', serif;
     display: flex;
     flex-direction: column;
     justify-content: top;
@@ -78,6 +84,6 @@ img {
     padding: 10px;
 }
 
-#about-header {
+/* #about-header {
     text-decoration: underline;
-}
+} */
