@@ -295,13 +295,16 @@ export function getTurnNumber(boardArray) {
 }
 
 export function executeFullTurn(e) {
+
+
+    // intialize click 
+
     //getting currentboard from local storage
     const roundsData = getFromLocalStorage('roundsData');
     const currentBoard = roundsData[roundsData.length - 1].board;
 
     //setting the clicked div 
     let cell = e.target;
-
     //Avoiding error when clicking on edge of cell.
     while (cell.tagName !== 'DIV') {
         cell = cell.parentElement;
@@ -316,86 +319,41 @@ export function executeFullTurn(e) {
         return;
     }
 
-    //sets color of X piece
-    cell.innerHTML = gameColorPieceX(roundsData[roundsData.length - 1].color);
+    if (!(roundsData.length % 2 === 0) || !(getTurnNumber(currentBoard) === -1)){
 
-    // index of clicked  cell
-    const cellNumber = cellLocation(cell.id);
+        // Player turn
+        executePlayerTurn(cell, currentBoard, roundsData);
+    
+    }
 
-    // sets cell to player clicked it
-    currentBoard[cellNumber].player = 'player';
-
-    // increase current turn by 1
-    let numberOfTurns = getTurnNumber(currentBoard) + 1;
-    currentBoard[cellNumber].turn = numberOfTurns;
-
-    //set current board back in roundsData
-    roundsData[roundsData.length - 1].board = currentBoard;
-
-    //sets roundsData into local storage
-    setInLocalStorage('roundsData', roundsData);
-
-
-    //checks if a winning combination is on the board
+    // after player turn check win condition
     let winStatus = checkWin(currentBoard);
+
+    
 
     //if there is no winning combination let the computer go
     if (winStatus === null) {
 
         document.getElementById('board-form').style.pointerEvents = 'none';
 
-        const headerLinks = document.querySelectorAll('.header-links');
-
-        headerLinks.forEach(
-            link => {
-                link.classList.toggle('disable-pointer-events');
-            }
-        );
-
-
         setTimeout(() => {
-            // return computer index next move
-            const computersMove = getComputerMove();
-            const computerCell = document.getElementById(cellName(computersMove));
 
-            //drop O image from computer move slot
-            const compImage = document.createElement('img');
-            compImage.setAttribute('src', '../assets/SingleO.svg');
-            computerCell.appendChild(compImage);
-
-
-            //assign computer to that board cell
-            currentBoard[computersMove].player = 'computer';
-
-            //increases number of turns
-            numberOfTurns = getTurnNumber(currentBoard) + 1;
-            currentBoard[computersMove].turn = numberOfTurns;
-
-            //sets roundsData in localstorage
-            roundsData[roundsData.length - 1].board = currentBoard;
-            setInLocalStorage('roundsData', roundsData);
+            executeComputerMove(currentBoard, roundsData);
 
             //checks for win status after computer has made move
             winStatus = checkWin(currentBoard);
             document.getElementById('board-form').style.pointerEvents = 'auto';
-
-            headerLinks.forEach(
-                link => {
-                    link.classList.toggle('disable-pointer-events');
-                }
-            );
-
 
             if (winStatus) {
                 //places results in squares on page
                 renderGameResult(winStatus);
                 //increment localstorage to -1, 0, or 1
                 setOutcomeInteger(winStatus);
-
+        
                 // Hide play again button
                 const newGameButton = document.getElementsByTagName('button')[0];
                 newGameButton.classList.remove('hidden');
-
+    
                 return;
             }
 
@@ -404,6 +362,8 @@ export function executeFullTurn(e) {
         );
 
     }
+
+    //check win condition after computer move
 
     //check if win status has been reached after player and/or computer moves
     if (winStatus) {
@@ -440,7 +400,7 @@ export function renderScoreBoard() {
     totalLosses.textContent = localStorage.getItem('Losses') || 0;
     totalCats.textContent = localStorage.getItem('Cats') || 0;
 
-    const showButtonCheck = getFromLocalStorage('roundsData');
+    const showButtonCheck = getFromLocalStorage('roundsData');    
     if (showButtonCheck[showButtonCheck.length - 1].outcome === -2) {
         newGameButton.classList.add('hidden');
     } else {
@@ -502,7 +462,7 @@ export function getComputerMove() {
             }
         }
         const rnd = Math.random();
-        if (convertStringToNum(currentBoard[4].player) === 0 && rnd > .4) {
+        if (convertStringToNum(currentBoard[4].player) === 0 && rnd > .4){
             return 4;
         }
     }
@@ -534,8 +494,50 @@ export function convertStringToNum(string) {
 
 }
 
-// function toggleLinksOnOff(links) {
-//     links.forEach(link =>
-//         link.addClassList('disable-pointer-events'));
-// }
+function executePlayerTurn(cell, currentBoard, roundsData){
+    
+    //sets color of X piece
+    cell.innerHTML = gameColorPieceX(roundsData[roundsData.length - 1].color);
 
+    // index of clicked  cell
+    const cellNumber = cellLocation(cell.id);
+
+    // sets cell to player clicked it
+    currentBoard[cellNumber].player = 'player';
+
+    // increase current turn by 1
+    let numberOfTurns = getTurnNumber(currentBoard) + 1;
+    currentBoard[cellNumber].turn = numberOfTurns;
+
+    //set current board back in roundsData
+    roundsData[roundsData.length - 1].board = currentBoard;
+
+    //sets roundsData into local storage
+    setInLocalStorage('roundsData', roundsData);
+
+}
+
+export function executeComputerMove(currentBoard, roundsData){
+    let numberOfTurns = getTurnNumber(currentBoard);
+    // return computer index next move
+    const computersMove = getComputerMove();
+    const computerCell = document.getElementById(cellName(computersMove));
+
+    //drop O image from computer move slot
+    const compImage = document.createElement('img');
+    compImage.setAttribute('src', '../assets/SingleO.svg');
+    computerCell.appendChild(compImage);
+
+
+    //assign computer to that board cell
+    currentBoard[computersMove].player = 'computer';
+
+    //increases number of turns
+    numberOfTurns = getTurnNumber(currentBoard) + 1;
+    currentBoard[computersMove].turn = numberOfTurns;
+
+    //sets roundsData in localstorage
+    roundsData[roundsData.length - 1].board = currentBoard;
+    setInLocalStorage('roundsData', roundsData);
+
+}

@@ -1,6 +1,6 @@
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage } from '../utils.js';
-import { renderUserInfo, renderScoreBoard, pushNewRoundToLocalStorage, getUserInfo, resetGameBoardDOM, populateBoardElement, executeFullTurn } from './game-page-utils.js';
+import { renderUserInfo, executeComputerMove, renderScoreBoard, pushNewRoundToLocalStorage, getUserInfo, resetGameBoardDOM, populateBoardElement, executeFullTurn } from './game-page-utils.js';
 
 const boardForm = document.getElementById('board-form');
 const mostRecentRound = getFromLocalStorage('roundsData');
@@ -33,6 +33,16 @@ newGameButton.addEventListener('click', () => {
 
     // Unhide Button
     newGameButton.classList.add('hidden');
+    const roundsData = getFromLocalStorage('roundsData');
+    const currentBoard = roundsData[roundsData.length - 1].board;
+    console.log(roundsData.length % 2);
+
+    if (roundsData.length % 2 === 0){
+        console.log('test1');
+        executeComputerMove(currentBoard, roundsData);
+        console.log('test2');
+    }
+    
 });
 
 resetSeriesButton.addEventListener('click', () => {
