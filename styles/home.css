@@ -5,6 +5,10 @@ main {
     height: 100%;
 }
 
+body{
+    min-height: 500px;
+}
+
 section {
     width: 400px;
     min-height: 450px;
