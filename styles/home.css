@@ -11,8 +11,9 @@ section {
     margin: 50px;
     align-self: flex-start;
     height: auto;
-    background-color: white;
-    border: solid black 5px;
+    background-color: rgba(247, 251, 255, 0.767);
+    border: solid black 1px;
+    border-radius: 5px;
     padding: 25px;
     font-family: 'Noto Serif', serif;
 }
@@ -27,7 +28,7 @@ hr {
 
 form > button {
     width: 75px;
-    border-radius: 10%;
+    border-radius: 5px;
     align-self: center;
     margin-top: 10px;
 }
