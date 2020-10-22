@@ -1,3 +1,7 @@
+*   {
+    font-family: 'Noto', sans-serif;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -31,12 +35,12 @@ section h2, section h3 {
 
 button {
     width: 80px;
-    border-radius: 10%;
+    border-radius: 5px;
     border: solid 1p;
 
     margin: 5px;
 
-    background-color: lightblue;
+    background-color: rgb(137, 229, 252);
     color: darkblue;
 
     font-family: 'Noto', sans-serif;
@@ -53,7 +57,7 @@ button {
     width: 480px;
     padding: 10px;
 
-    background-color: lightblue;
+    background-color: rgb(137, 229, 252);
 
     border-radius: 1%;
 }
@@ -69,7 +73,7 @@ button {
     background: white;
     margin-left: 20px;
     border-radius: 5px;
-    background-color: lightseagreen;
+    background-color: rgb(58, 199, 180);
 
     width: 300px;
 }
@@ -85,9 +89,10 @@ p {
     margin: 5px;
 
     background-color: lightgray;
-    border: 1px solid darkgray;
+    border: 1px solid lightslategray;
+    border-radius: 5px;
 
-    font-size: 1.5em;
+    font-size: 1.4em;
 }
 
 
