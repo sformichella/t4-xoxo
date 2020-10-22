@@ -14,8 +14,15 @@ devsImage.setAttribute('src', './assets/devs.svg');
 const homeImage = document.getElementById('home');
 homeImage.setAttribute('src', './assets/reset.svg');
 const anchorTag = document.querySelectorAll('a');
+const headerLabels = document.getElementsByClassName('header-label');
+
 anchorTag[0].setAttribute('href', './index.html');
+anchorTag[1].style.display = 'none';
+headerLabels[1].style.display = 'none';
+anchorTag[2].style.display = 'none';
+headerLabels[2].style.display = 'none';
 anchorTag[3].setAttribute('href', './about/index.html');
+
 
 
 form.addEventListener('submit', (e) => {
