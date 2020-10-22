@@ -27,7 +27,7 @@ newGameButton.addEventListener('click', () => {
     resetGameBoardDOM();
     const userInfo = getUserInfo();
     const userName = document.getElementById('user-name');
-    userName.textContent = `User: ${userInfo.name}`;
+    userName.textContent = `${userInfo.name}`;
     const difficultyElem = document.getElementById('difficulty');
     difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
 

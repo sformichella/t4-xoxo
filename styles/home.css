@@ -53,6 +53,13 @@ hr {
     margin-bottom: 15px;
 }
 
+.header-h1 {
+    font-size: 60px;
+    font-family: 'Titillium Web', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 #play-div, #results-div{
     display: none;
     display: none;
