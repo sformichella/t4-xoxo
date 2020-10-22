@@ -152,7 +152,20 @@ export function doesPlayerWin(board, player) {
         if (win.every(el => {return moves.indexOf(el) !== -1;})) {
             winningLine(win);
             playerWins = true;
-            return playerWins;
+
+            //Display win message
+            let playerName = '';
+            if (player === 'computer') {
+                playerName = 'Computer';
+            } else {
+                const roundsData = getFromLocalStorage('roundsData');
+                playerName = roundsData[roundsData.length - 1].name;
+            }
+            const winMSG = document.getElementById('win-msg');
+            winMSG.textContent = `${playerName} Wins!`;
+            winMSG.classList.remove('hidden');
+
+            return playerWins;            
         }
     });
 
