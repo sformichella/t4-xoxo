@@ -34,19 +34,50 @@ section h2, section h3 {
 }
 
 button {
-    width: 80px;
+    width: 120px;
+    height: 50px;
     border-radius: 5px;
-    border: solid 1p;
+    border: solid black 1px;
 
     margin: 5px;
 
-    background-color: rgb(137, 229, 252);
+    background-color: yellow;
     color: darkblue;
 
     font-family: 'Noto', sans-serif;
     font-weight: 700;
+    transition-duration: .3s;
 }
 
+button:hover {
+    background-color: rgb(58, 199, 180);
+}
+
+div.scores.flex-row {
+    margin-bottom: 10px;
+}
+
+p {
+    width: 40px;
+    height: 40px;
+
+    margin: 5px;
+
+    background-color: lightgray;
+    border: 1px solid lightslategray;
+    border-radius: 5px;
+
+    font-size: 1.4em;
+}
+
+h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin-top: 10px;
+}
 .game-board {
     display: grid;
     grid-template-columns: 150px 150px 150px;
@@ -81,23 +112,6 @@ button {
 .scores {
     margin-bottom: 40px;
 }
-
-p {
-    width: 40px;
-    height: 40px;
-
-    margin: 5px;
-
-    background-color: lightgray;
-    border: 1px solid lightslategray;
-    border-radius: 5px;
-
-    font-size: 1.4em;
-}
-
-
-
-
 
 #top-left { 
     border-bottom: 2px solid #3F58DF;

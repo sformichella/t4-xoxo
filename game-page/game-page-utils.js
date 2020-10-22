@@ -319,17 +319,17 @@ export function executeFullTurn(e) {
         return;
     }
 
-    if (!(roundsData.length % 2 === 0) || !(getTurnNumber(currentBoard) === -1)){
+    if (!(roundsData.length % 2 === 0) || !(getTurnNumber(currentBoard) === -1)) {
 
         // Player turn
         executePlayerTurn(cell, currentBoard, roundsData);
-    
+
     }
 
     // after player turn check win condition
     let winStatus = checkWin(currentBoard);
 
-    
+
 
     //if there is no winning combination let the computer go
     if (winStatus === null) {
@@ -349,11 +349,11 @@ export function executeFullTurn(e) {
                 renderGameResult(winStatus);
                 //increment localstorage to -1, 0, or 1
                 setOutcomeInteger(winStatus);
-        
+
                 // Hide play again button
                 const newGameButton = document.getElementsByTagName('button')[0];
                 newGameButton.classList.remove('hidden');
-    
+
                 return;
             }
 
@@ -400,7 +400,7 @@ export function renderScoreBoard() {
     totalLosses.textContent = localStorage.getItem('Losses') || 0;
     totalCats.textContent = localStorage.getItem('Cats') || 0;
 
-    const showButtonCheck = getFromLocalStorage('roundsData');    
+    const showButtonCheck = getFromLocalStorage('roundsData');
     if (showButtonCheck[showButtonCheck.length - 1].outcome === -2) {
         newGameButton.classList.add('hidden');
     } else {
@@ -412,7 +412,7 @@ export function renderUserInfo() {
     const userInfo = getUserInfo();
 
     const userName = document.getElementById('user-name');
-    userName.textContent = `User: ${userInfo.name}`;
+    userName.textContent = `${userInfo.name}`;
 
     const difficultyElem = document.getElementById('difficulty');
     difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
@@ -462,7 +462,7 @@ export function getComputerMove() {
             }
         }
         const rnd = Math.random();
-        if (convertStringToNum(currentBoard[4].player) === 0 && rnd > .4){
+        if (convertStringToNum(currentBoard[4].player) === 0 && rnd > .4) {
             return 4;
         }
     }
@@ -494,8 +494,8 @@ export function convertStringToNum(string) {
 
 }
 
-function executePlayerTurn(cell, currentBoard, roundsData){
-    
+function executePlayerTurn(cell, currentBoard, roundsData) {
+
     //sets color of X piece
     cell.innerHTML = gameColorPieceX(roundsData[roundsData.length - 1].color);
 
@@ -517,7 +517,7 @@ function executePlayerTurn(cell, currentBoard, roundsData){
 
 }
 
-export function executeComputerMove(currentBoard, roundsData){
+export function executeComputerMove(currentBoard, roundsData) {
     let numberOfTurns = getTurnNumber(currentBoard);
     // return computer index next move
     const computersMove = getComputerMove();
