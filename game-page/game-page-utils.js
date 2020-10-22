@@ -419,7 +419,7 @@ export function renderUserInfo() {
     userName.textContent = `${userInfo.name}`;
 
     const difficultyElem = document.getElementById('difficulty');
-    difficultyElem.textContent = `Game Mode: ${userInfo.difficulty}`;
+    difficultyElem.textContent = `${userInfo.difficulty} Mode`;
 }
 
 export function getComputerMove() {
@@ -562,15 +562,15 @@ function winningLine(winningArray) {
     const lineFileNames = [
         {
             filename: '../assets/HorizontalLine.svg',
-            className: 'hor-top' 
+            className: 'hor-top'
         },
         {
             filename: '../assets/HorizontalLine.svg',
-            className: 'hor-mid' 
+            className: 'hor-mid'
         },
         {
             filename: '../assets/HorizontalLine.svg',
-            className: 'hor-bottom'   
+            className: 'hor-bottom'
         },
         {
             filename: '../assets/HorizontalLine.svg',
@@ -578,20 +578,20 @@ function winningLine(winningArray) {
         },
         {
             filename: '../assets/HorizontalLine.svg',
-            className: 'vert-mid' 
+            className: 'vert-mid'
         },
         {
             filename: '../assets/HorizontalLine.svg',
-            className: 'vert-right' 
-        },        
-        {
-            filename: '../assets/HorizontalLine.svg',
-            className: 'forwards-diag'   
+            className: 'vert-right'
         },
         {
             filename: '../assets/HorizontalLine.svg',
-            className: 'backwards-diag' 
-        }  
+            className: 'forwards-diag'
+        },
+        {
+            filename: '../assets/HorizontalLine.svg',
+            className: 'backwards-diag'
+        }
     ];
 
     const stringWinningArray = JSON.stringify(winningArray);
@@ -603,12 +603,12 @@ function winningLine(winningArray) {
             whereIsWin = i;
         }
     }
-      
+
     const winningObject = lineFileNames[whereIsWin];
 
-    
 
-    
+
+
 
     const gameBoard = document.getElementById('board-form');
     const winLine = document.createElement('div');
@@ -616,8 +616,7 @@ function winningLine(winningArray) {
     winLine.setAttribute('id', 'win-line');
     const image = document.createElement('img');
     image.src = winningObject.filename;
-    
+
     winLine.appendChild(image);
     gameBoard.appendChild(winLine);
 }
-	

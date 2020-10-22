@@ -29,7 +29,7 @@ newGameButton.addEventListener('click', () => {
     const userName = document.getElementById('user-name');
     userName.textContent = `${userInfo.name}`;
     const difficultyElem = document.getElementById('difficulty');
-    difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
+    difficultyElem.textContent = `${userInfo.difficulty} Mode`;
 
     // Unhide Button
     newGameButton.classList.add('hidden');
