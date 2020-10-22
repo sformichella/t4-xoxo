@@ -1,11 +1,13 @@
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage } from '../utils.js';
-import { renderUserInfo, executeComputerMove, renderScoreBoard, pushNewRoundToLocalStorage, getUserInfo, resetGameBoardDOM, populateBoardElement, executeFullTurn } from './game-page-utils.js';
+import { renderUserInfo, executeComputerMove, renderScoreBoard, pushNewRoundToLocalStorage, getUserInfo, resetGameBoardDOM, populateBoardElement, executeFullTurn, displayWinner, winningLine } from './game-page-utils.js';
 
 const boardForm = document.getElementById('board-form');
 const mostRecentRound = getFromLocalStorage('roundsData');
 const mostRecentBoard = mostRecentRound[mostRecentRound.length - 1].board;
 const newGameButton = document.getElementsByTagName('button')[0];
+const mostRecentWinningArray = mostRecentRound[mostRecentRound.length - 1].winningArray;
+const mostRecentOutcome = mostRecentRound[mostRecentRound.length - 1].outcome;
 
 
 renderHeader();
@@ -15,6 +17,12 @@ renderUserInfo();
 renderScoreBoard();
 
 populateBoardElement(boardForm, mostRecentBoard);
+
+displayWinner();
+
+if (mostRecentOutcome === 1 || mostRecentOutcome === -1) {
+    winningLine(mostRecentWinningArray);
+}
 
 boardForm.addEventListener('mouseup', (e) => {
 
