@@ -555,7 +555,7 @@ function winningLine(winningArray) {
     winLine.classList.add('win-line');
     const image = document.createElement('img');
     image.src = '../assets/HorizontalLine.svg';
-    
+
     winLine.appendChild(image);
     gameBoard.appendChild(winLine);
 }	
