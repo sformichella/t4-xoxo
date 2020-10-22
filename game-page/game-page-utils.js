@@ -415,7 +415,7 @@ export function renderUserInfo() {
     userName.textContent = `${userInfo.name}`;
 
     const difficultyElem = document.getElementById('difficulty');
-    difficultyElem.textContent = `Difficulty: ${userInfo.difficulty}`;
+    difficultyElem.textContent = `Game Mode: ${userInfo.difficulty}`;
 }
 
 export function getComputerMove() {
