@@ -13,11 +13,11 @@ export function renderHeader() {
         '                        <a href = \'../index.html\' class = \'header-links\'><img class = \'header-icons\' id=\'home\' title=\'Home\' src=\'../assets/reset.svg\'></a>' +
         '                        <label class=\'header-label\'>Reset</label>' +
         '                    </div>' +
-        '                    <div class = \'flex-column justify-center\'>' +
+        '                    <div id = \'play-div\' class = \'flex-column justify-center\'>' +
         '                        <a href = \'../game-page/index.html\' class = \'header-links\'><img class = \'header-icons\' id=\'play\' title=\'Play\' src=\'../assets/play.svg\'></a>' +
         '                        <label class=\'header-label\'>Play</label>  ' +
         '                    </div>' +
-        '                    <div class = \'flex-column justify-center\'>' +
+        '                    <div id = \'results-div\' class = \'flex-column justify-center\'>' +
         '                        <a href = \'../results/index.html\' class = \'header-links\'><img class = \'header-icons\' id=\'results\' title=\'Results\' src=\'../assets/results.svg\'></a>' +
         '                        <label class=\'header-label\'>Results</label>  ' +
         '                    </div>' +
