@@ -310,6 +310,14 @@ export function executeFullTurn(e) {
 
         document.getElementById('board-form').style.pointerEvents = 'none';
 
+        //Disable header links
+        const headerLinks = document.querySelectorAll('.header-links');
+        headerLinks.forEach(
+            link => {
+                link.classList.toggle('disable-pointer-events');
+            }
+        );
+
         setTimeout(() => {
 
             executeComputerMove(currentBoard, roundsData);
@@ -317,6 +325,14 @@ export function executeFullTurn(e) {
             //checks for win status after computer has made move
             winStatus = checkWin(currentBoard);
             document.getElementById('board-form').style.pointerEvents = 'auto';
+
+            //Turn links back on
+            headerLinks.forEach(
+                link => {
+                    link.classList.toggle('disable-pointer-events');
+                }
+            );
+
 
             if (winStatus) {
                 //places results in squares on page
@@ -555,7 +571,7 @@ function winningLine(winningArray) {
     winLine.classList.add('win-line');
     const image = document.createElement('img');
     image.src = '../assets/HorizontalLine.svg';
-    
+
     winLine.appendChild(image);
     gameBoard.appendChild(winLine);
 }	
