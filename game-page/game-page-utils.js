@@ -150,21 +150,13 @@ export function doesPlayerWin(board, player) {
 
     winConditions.forEach(win => {
         if (win.every(el => {return moves.indexOf(el) !== -1;})) {
+            //Set the winning array into local storage on the same object as the current game
+            const roundsData = getFromLocalStorage('roundsData');
+            roundsData[roundsData.length - 1].winningArray = win;
+            setInLocalStorage('roundsData', roundsData);
+
             winningLine(win);
             playerWins = true;
-
-            //Display win message
-            let playerName = '';
-            if (player === 'computer') {
-                playerName = 'Computer';
-            } else {
-                const roundsData = getFromLocalStorage('roundsData');
-                playerName = roundsData[roundsData.length - 1].name;
-            }
-            const winMSG = document.getElementById('win-msg');
-            winMSG.textContent = `${playerName} Wins!`;
-            winMSG.classList.remove('hidden');
-
             return playerWins;            
         }
     });
@@ -340,6 +332,8 @@ export function executeFullTurn(e) {
                 //increment localstorage to -1, 0, or 1
                 setOutcomeInteger(winStatus);
 
+                displayWinner();
+
                 // Hide play again button
                 const newGameButton = document.getElementsByTagName('button')[0];
                 newGameButton.classList.remove('hidden');
@@ -361,6 +355,8 @@ export function executeFullTurn(e) {
         renderGameResult(winStatus);
         //increment localstorage to -1, 0, or 1
         setOutcomeInteger(winStatus);
+
+        displayWinner();
 
         // Hide play again button
         const newGameButton = document.getElementsByTagName('button')[0];
@@ -540,7 +536,7 @@ export function executeComputerMove(currentBoard, roundsData) {
 
 }
 
-function winningLine(winningArray) {
+export function winningLine(winningArray) {
     const winConditions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -563,7 +559,7 @@ function winningLine(winningArray) {
             whereIsWin = i;
         }
     }
-
+    console.log(whereIsWin, winningArray, stringWinningArray);
     const winningObject = lineFileNames[whereIsWin];
     const gameBoard = document.getElementById('board-form');
     const winLine = document.createElement('div');
@@ -575,3 +571,24 @@ function winningLine(winningArray) {
     winLine.appendChild(image);
     gameBoard.appendChild(winLine);
 }	
+
+export function displayWinner() {
+    //Display win message
+    const roundsData = getFromLocalStorage('roundsData');
+    const gameOutcome = roundsData[roundsData.length - 1].outcome;
+    const winMSG = document.getElementById('win-msg');
+    let playerName = '';
+
+    if (gameOutcome === 0) {
+        winMSG.textContent = `Cat's Game!`;
+        winMSG.classList.remove('hidden');
+    } else if (gameOutcome === 1) {
+        playerName = roundsData[roundsData.length - 1].name;
+        winMSG.textContent = `${playerName} Wins!`;
+        winMSG.classList.remove('hidden');
+    } else if (gameOutcome === -1) {
+        playerName = 'Computer';
+        winMSG.textContent = `${playerName} Wins!`;
+        winMSG.classList.remove('hidden');
+    }
+}
