@@ -152,7 +152,7 @@ export function doesPlayerWin(board, player) {
         if (win.every(el => {return moves.indexOf(el) !== -1;})) {
             //Set the winning array into local storage on the same object as the current game
             const roundsData = getFromLocalStorage('roundsData');
-            roundsData[roundsData.length - 1].winningArray = win;
+            roundsData[roundsData.length - 1].winningArray.push(win);
             setInLocalStorage('roundsData', roundsData);
 
             winningLine(win);
@@ -559,7 +559,6 @@ export function winningLine(winningArray) {
             whereIsWin = i;
         }
     }
-    console.log(whereIsWin, winningArray, stringWinningArray);
     const winningObject = lineFileNames[whereIsWin];
     const gameBoard = document.getElementById('board-form');
     const winLine = document.createElement('div');

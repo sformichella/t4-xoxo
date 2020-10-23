@@ -21,7 +21,10 @@ populateBoardElement(boardForm, mostRecentBoard);
 displayWinner();
 
 if (mostRecentOutcome === 1 || mostRecentOutcome === -1) {
-    winningLine(mostRecentWinningArray);
+    mostRecentWinningArray.forEach(element => {
+        winningLine(element);
+    });
+    
 }
 
 boardForm.addEventListener('mouseup', (e) => {
