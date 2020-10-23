@@ -15,6 +15,7 @@ headerLabels[1].style.display = 'none';
 anchorTag[2].style.display = 'none';
 headerLabels[2].style.display = 'none';
 
+
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
