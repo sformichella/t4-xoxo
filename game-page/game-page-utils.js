@@ -177,7 +177,8 @@ export function pushNewRoundToLocalStorage() {
         color: currentRound.color,
         difficulty: currentRound.difficulty,
         outcome: -2,
-        board: makeFreshBoard()
+        board: makeFreshBoard(),
+        winningArray: []
     };
 
 
