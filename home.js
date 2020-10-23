@@ -2,7 +2,7 @@ import { setInLocalStorage } from './utils.js';
 import { renderHeader } from './header/header.js';
 import { makeFreshBoard } from './game-page/game-page-utils.js';
 
-renderHeader();
+renderHeader('home');
 
 localStorage.clear();
 
