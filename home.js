@@ -37,7 +37,8 @@ form.addEventListener('submit', (e) => {
         color: formData.get('color'),
         difficulty: formData.get('game-style'),
         outcome: -2,
-        board: makeFreshBoard()
+        board: makeFreshBoard(),
+        winningArray: []
 
     };
 
