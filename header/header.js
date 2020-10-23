@@ -5,9 +5,7 @@ export function renderHeader(page) {
 
     if (page === 'home'){
         str = '.';
-
     }
-    console.log(str);
 
     var headerString = '<div id=\'header-container\' class=\'flex-row space-between\'>' +
         '            <h1 class=\'left-margin header-h1\'>T<sup>4</sup> xoxo</h1>' +
@@ -33,9 +31,6 @@ export function renderHeader(page) {
         '            </div>' +
         '        </div>';
 
-
-
     header.innerHTML = headerString;
 
 }
-
