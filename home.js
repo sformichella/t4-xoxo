@@ -24,7 +24,6 @@ headerLabels[2].style.display = 'none';
 //anchorTag[3].setAttribute('href', './about/index.html');
 
 
-
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
