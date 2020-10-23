@@ -342,10 +342,7 @@ export function executeFullTurn(e) {
                 return;
             }
 
-
-        }, Math.random() * 2000
-        );
-
+        }, Math.random() * 2000);
     }
 
     //check win condition after computer move
@@ -415,52 +412,22 @@ export function renderUserInfo() {
 
 export function getComputerMove() {
 
-    const taken = [];
-
     const roundsData = getFromLocalStorage('roundsData');
     const currentBoard = roundsData[roundsData.length - 1].board;
 
-    if (roundsData[roundsData.length - 1].difficulty === 'Competitive') {
+    if (roundsData[roundsData.length - 1].difficulty === 'Easy') {
 
-        const winConditions = [
-            [0, 1, 2],
-            [3, 4, 5],
-            [6, 7, 8],
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8],
-            [2, 4, 6],
-            [0, 4, 8]
-        ];
+        return easyMode(currentBoard);
+    } else {
 
-        for (let i = 0; i < winConditions.length; i++) {
-            if ((convertStringToNum(currentBoard[winConditions[i][0]].player) + convertStringToNum(currentBoard[winConditions[i][1]].player) + convertStringToNum(currentBoard[winConditions[i][2]].player)) === -20) {
-                if (convertStringToNum(currentBoard[winConditions[i][0]].player) === 0) {
-                    return winConditions[i][0];
-                } else if (convertStringToNum(currentBoard[winConditions[i][1]].player) === 0) {
-                    return winConditions[i][1];
-                } else if (convertStringToNum(currentBoard[winConditions[i][2]].player) === 0) {
-                    return winConditions[i][2];
-                }
-            }
-        }
-
-        for (let i = 0; i < winConditions.length; i++) {
-            if ((convertStringToNum(currentBoard[winConditions[i][0]].player) + convertStringToNum(currentBoard[winConditions[i][1]].player) + convertStringToNum(currentBoard[winConditions[i][2]].player)) === 2) {
-                if (convertStringToNum(currentBoard[winConditions[i][0]].player) === 0) {
-                    return winConditions[i][0];
-                } else if (convertStringToNum(currentBoard[winConditions[i][1]].player) === 0) {
-                    return winConditions[i][1];
-                } else if (convertStringToNum(currentBoard[winConditions[i][2]].player) === 0) {
-                    return winConditions[i][2];
-                }
-            }
-        }
-        const rnd = Math.random();
-        if (convertStringToNum(currentBoard[4].player) === 0 && rnd > .4) {
-            return 4;
-        }
+        return competitiveMode(currentBoard);
     }
+}
+
+function easyMode(currentBoard){
+
+    // Populate all current moves in a 'taken' array
+    const taken = [];
 
     for (let i = 0; i < currentBoard.length; i++) {
         if (currentBoard[i].turn !== -1) {
@@ -468,13 +435,61 @@ export function getComputerMove() {
         }
     }
 
+    // Pick random move, if it is in 'taken' array then pick another random number until it is not in the 'taken' array
     let rand = Math.floor(Math.random() * 9);
-
     while (taken.includes(rand)) {
         rand = Math.floor(Math.random() * 9);
     }
-
+    //return random move
     return rand;
+}
+
+function competitiveMode(currentBoard){
+
+    const winConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [2, 4, 6],
+        [0, 4, 8]
+    ];
+
+    // Computer checks whether they have a winning move. Return that move if that is the case.
+    for (let i = 0; i < winConditions.length; i++) {
+        if ((convertStringToNum(currentBoard[winConditions[i][0]].player) + convertStringToNum(currentBoard[winConditions[i][1]].player) + convertStringToNum(currentBoard[winConditions[i][2]].player)) === -20) {
+            if (convertStringToNum(currentBoard[winConditions[i][0]].player) === 0) {
+                return winConditions[i][0];
+            } else if (convertStringToNum(currentBoard[winConditions[i][1]].player) === 0) {
+                return winConditions[i][1];
+            } else if (convertStringToNum(currentBoard[winConditions[i][2]].player) === 0) {
+                return winConditions[i][2];
+            }
+        }
+    }
+
+    // Computer checks whether the player has a winning move. Return that move if that is the case.
+    for (let i = 0; i < winConditions.length; i++) {
+        if ((convertStringToNum(currentBoard[winConditions[i][0]].player) + convertStringToNum(currentBoard[winConditions[i][1]].player) + convertStringToNum(currentBoard[winConditions[i][2]].player)) === 2) {
+            if (convertStringToNum(currentBoard[winConditions[i][0]].player) === 0) {
+                return winConditions[i][0];
+            } else if (convertStringToNum(currentBoard[winConditions[i][1]].player) === 0) {
+                return winConditions[i][1];
+            } else if (convertStringToNum(currentBoard[winConditions[i][2]].player) === 0) {
+                return winConditions[i][2];
+            }
+        }
+    }
+    // If the middle square is not occupied play it with a 60% probability
+    const rnd = Math.random();
+    if (convertStringToNum(currentBoard[4].player) === 0 && rnd > .4) {
+        return 4;
+    }
+    // if all the above are not satisfied then play according to Easy Mode logic (ie. random free cell)
+    return easyMode(currentBoard);
+
 }
 
 export function convertStringToNum(string) {
