@@ -17,6 +17,8 @@ canvas {
     height: 100%;
     border-radius: 20px;
     border: solid grey 10px;
+    min-width: 600px;
+    min-height: 700px;
 }
 
 h2 {
