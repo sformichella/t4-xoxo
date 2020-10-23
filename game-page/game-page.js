@@ -10,7 +10,7 @@ const mostRecentWinningArray = mostRecentRound[mostRecentRound.length - 1].winni
 const mostRecentOutcome = mostRecentRound[mostRecentRound.length - 1].outcome;
 
 
-renderHeader();
+renderHeader('game');
 
 renderUserInfo();
 

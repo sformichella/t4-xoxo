@@ -1,7 +1,7 @@
 import { renderHeader } from '../header/header.js';
 import { getFromLocalStorage } from '../utils.js';
 
-renderHeader();
+renderHeader('results');
 
 const chartWins = getFromLocalStorage('Wins');
 const chartLosses = getFromLocalStorage('Losses');
