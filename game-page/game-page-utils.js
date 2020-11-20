@@ -44,6 +44,7 @@ export function cellLocation(string) {
         'bottom-right'
     ];
 
+    // very cool!
     return semanticLocation.indexOf(string);
 }
 
@@ -135,6 +136,7 @@ export function getPlayerMoves(gameBoard, playerString) {
 export function doesPlayerWin(board, player) {
     const moves = getPlayerMoves(board, player);
 
+    // nice way to solve this problem.
     const winConditions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -149,7 +151,8 @@ export function doesPlayerWin(board, player) {
     let playerWins = false;
 
     winConditions.forEach(win => {
-        if (win.every(el => {return moves.indexOf(el) !== -1;})) {
+        // super resourceful use of this array method!
+        if (win.every(el => moves.indexOf(el) !== -1)) {
             //Set the winning array into local storage on the same object as the current game
             const roundsData = getFromLocalStorage('roundsData');
             roundsData[roundsData.length - 1].winningArray.push(win);
@@ -186,6 +189,7 @@ export function pushNewRoundToLocalStorage() {
     setInLocalStorage('roundsData', roundsData);
 }
 
+// interesting translator function
 export function setOutcomeInteger(winStatus) {
 
     const roundsArray = getFromLocalStorage('roundsData');
