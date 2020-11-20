@@ -7,10 +7,12 @@ const checkLocalStorage = getFromLocalStorage('roundsData');
 const playLinkDiv = document.getElementById('play-div');
 const resultsLinkDiv = document.getElementById('results-div');
 
-if (checkLocalStorage !== null && checkLocalStorage !== undefined && checkLocalStorage.length !== 0){
-    playLinkDiv.style.display = 'flex';
-    resultsLinkDiv.style.display = 'flex';
-} else {
-    playLinkDiv.style.display = 'none';
-    resultsLinkDiv.style.display = 'none';
-}
+const flexOrNone = (
+    checkLocalStorage !== null 
+    && checkLocalStorage !== undefined 
+    && checkLocalStorage.length !== 0
+) ? 'flex' : 'none';
+
+playLinkDiv.style.display = flexOrNone;
+resultsLinkDiv.style.display = flexOrNone;
+

@@ -4,10 +4,13 @@ import { renderUserInfo, executeComputerMove, renderScoreBoard, pushNewRoundToLo
 
 const boardForm = document.getElementById('board-form');
 const mostRecentRound = getFromLocalStorage('roundsData');
-const mostRecentBoard = mostRecentRound[mostRecentRound.length - 1].board;
 const newGameButton = document.getElementsByTagName('button')[0];
-const mostRecentWinningArray = mostRecentRound[mostRecentRound.length - 1].winningArray;
-const mostRecentOutcome = mostRecentRound[mostRecentRound.length - 1].outcome;
+
+const {
+    board: mostRecentBoard,
+    winningArray: mostRecentWinningArray,
+    outcome: mostRecentOutcome
+} = mostRecentRound[mostRecentRound.length - 1];
 
 
 renderHeader('game');

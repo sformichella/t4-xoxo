@@ -7,6 +7,7 @@ export function renderHeader(page) {
         str = '.';
     }
 
+    // huh, so why couldn't this have been done using the DOM api?
     var headerString = '<div id=\'header-container\' class=\'flex-row space-between\'>' +
         '            <h1 class=\'left-margin header-h1\'>T<sup>4</sup> xoxo</h1>' +
         '            <div class = \'flex-row\'>' +
